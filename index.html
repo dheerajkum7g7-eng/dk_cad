@@ -71,17 +71,24 @@
         <div class="badge">⚡ Professional CAD Automation</div>
         <h1>AUTOMATE CIVIL 3D Works<br>IN 2D AUTOCAD</h1>
         <p>40+ powerful tools for surveyors and civil engineers. Generate surfaces, contours, cross-sections, volumes, annotations and more — all from one panel.</p>
-        <a href="https://github.com/dheerajkum7g7-eng/dk_cad/releases/download/v1.0/DKCadPro_Setup.exe" class="download-btn">
-            <svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 4h14v-2H5v2z"/></svg>
-            Download DK CAD Pro
-        </a>
-        <a href="request-key.html" class="download-btn" style="background:linear-gradient(135deg,#444,#666);margin-top:12px;display:inline-flex;">
-            📋 Request License Key
-        </a>
-        <a href="DKCadPro_User_Manual.pdf" class="download-btn" style="background:linear-gradient(135deg,#1a472a,#2d6a4f);margin-top:12px;display:inline-flex;">
-            📖 User Manual
-        </a>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-bottom:16px;">
+            <a href="https://github.com/dheerajkum7g7-eng/dk_cad/releases/download/v1.0/DKCadPro_Setup.exe" class="download-btn" onclick="showDownloadMsg()">
+                <svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 4h14v-2H5v2z"/></svg>
+                Download
+            </a>
+            <a href="request-key.html" class="download-btn" style="background:linear-gradient(135deg,#444,#666);">
+                📋 License Key
+            </a>
+            <a href="DKCadPro_User_Manual.pdf" class="download-btn" style="background:linear-gradient(135deg,#1a472a,#2d6a4f);">
+                📖 User Manual
+            </a>
+        </div>
+        <div id="dlMsg" style="display:none;background:rgba(0,170,255,0.1);border:1px solid #00aaff;border-radius:10px;padding:14px 20px;margin-bottom:12px;color:#00aaff;font-size:0.9rem;max-width:500px;margin-left:auto;margin-right:auto;">
+            ✅ Downloading... After install:<br>
+            1. Open AutoCAD &nbsp;|&nbsp; 2. Type: <strong>ACTIVATE_DK_CAD</strong> &nbsp;|&nbsp; 3. Enter License Key
+        </div>
         <div class="version-info">v1.0 &nbsp;•&nbsp; Windows 10/11 &nbsp;•&nbsp; 2.06 MB</div>
+        <script>function showDownloadMsg(){document.getElementById('dlMsg').style.display='block';}</script>
     </section>
 
     <section class="features" id="features">
@@ -118,4 +125,4 @@
     </footer>
 </div>
 </body>
-                                                                       </html>
+    </html>
