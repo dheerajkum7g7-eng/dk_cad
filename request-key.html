@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DK CAD Pro — Request License</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Segoe UI',sans-serif; background:#0a0a0a; color:#fff; min-height:100vh; display:flex; align-items:center; justify-content:center; }
+.card { background:#1a1a2e; border:1px solid #2a2a4a; border-radius:16px; padding:40px; width:100%; max-width:440px; margin:20px; }
+.logo { font-size:1.8rem; font-weight:800; color:#00aaff; text-align:center; }
+.sub { color:#888; font-size:0.85rem; text-align:center; margin:8px 0 30px; }
+label { display:block; color:#aaa; font-size:0.75rem; font-weight:700; margin-bottom:6px; text-transform:uppercase; letter-spacing:1px; }
+input, select { width:100%; padding:12px 14px; background:#0f0f1e; border:1px solid #2a2a4a; border-radius:8px; color:#fff; font-size:0.95rem; margin-bottom:18px; }
+input:focus, select:focus { outline:none; border-color:#00aaff; }
+.btn { width:100%; padding:14px; background:linear-gradient(135deg,#0077cc,#00aaff); color:#fff; border:none; border-radius:8px; font-size:1rem; font-weight:700; cursor:pointer; }
+.btn:disabled { opacity:0.5; cursor:not-allowed; }
+.status { margin-top:14px; padding:14px; border-radius:8px; text-align:center; font-size:0.9rem; display:none; line-height:1.6; }
+.success { background:rgba(0,200,100,0.1); border:1px solid #00c864; color:#00c864; }
+.error   { background:rgba(255,80,80,0.1);  border:1px solid #ff5050; color:#ff5050; }
+.loading { background:rgba(0,170,255,0.1);  border:1px solid #00aaff; color:#00aaff; }
+.note { margin-top:20px; text-align:center; color:#555; font-size:0.75rem; line-height:1.6; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="logo">DK CAD Pro</div>
+  <div class="sub">Request a License Key</div>
+
+  <label>Full Name</label>
+  <input id="name" type="text" placeholder="Your full name">
+
+  <label>Email Address</label>
+  <input id="email" type="email" placeholder="your@email.com">
+
+  <label>License Type</label>
+  <select id="type">
+    <option value="Trial">Trial — 7 Days</option>
+    <option value="Monthly">Monthly — 30 Days</option>
+    <option value="Quarterly">Quarterly — 90 Days</option>
+    <option value="Yearly">Yearly — 1 Year</option>
+    <option value="Lifetime">Lifetime</option>
+  </select>
+
+  <button class="btn" id="btn" onclick="submit()">Submit Request</button>
+  <div class="status" id="st"></div>
+  <div class="note">Your request will be reviewed.<br>Key will be sent to your email within 24 hours.</div>
+</div>
+
+<script>
+// Formspree — free form backend, no token needed
+// Replace FORMSPREE_ID with your Formspree form ID
+const FORMSPREE_ID = 'YOUR_FORMSPREE_ID';
+
+async function submit() {
+  const name  = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const type  = document.getElementById('type').value;
+
+  if (!name || !email) { show('Please fill all fields.','error'); return; }
+  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { show('Valid email daalo.','error'); return; }
+
+  document.getElementById('btn').disabled = true;
+  show('Submitting...','loading');
+
+  try {
+    const r = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ name, email, type, message: `License Request: ${type}` })
+    });
+
+    if (r.ok) {
+      show('✅ Request submitted!\nKey will be sent to ' + email + ' within 24 hours.','success');
+      document.getElementById('name').value = '';
+      document.getElementById('email').value = '';
+    } else {
+      show('Error submitting. Please try again.','error');
+    }
+  } catch(e) {
+    show('Network error. Please try again.','error');
+  }
+  document.getElementById('btn').disabled = false;
+}
+
+function show(msg, type) {
+  const el = document.getElementById('st');
+  el.style.display = 'block';
+  el.className = 'status ' + type;
+  el.textContent = msg;
+}
+</script>
+</body>
+</html>
