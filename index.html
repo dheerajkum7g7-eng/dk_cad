@@ -5,12 +5,12 @@
     <meta name="google-site-verification" content="nHWPzJhtWwLJ5BN0MALE48AnrjASbJfDO59akfDve4Y" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:title" content="DK CAD Pro — AutoCAD Automation Tool">
-<meta property="og:description" content="40+ powerful tools for Civil & Survey work in AutoCAD 2022-2027">
-<meta property="og:image" content="https://raw.githubusercontent.com/dheerajkum7g7-eng/dk_cad/main/preview.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:url" content="https://dheerajkum7g7-eng.github.io/dk_cad/">
-<meta property="og:type" content="website">
+    <meta property="og:description" content="40+ powerful tools for Civil & Survey work in AutoCAD 2022-2027">
+    <meta property="og:image" content="https://raw.githubusercontent.com/dheerajkum7g7-eng/dk_cad/main/preview.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="https://dheerajkum7g7-eng.github.io/dk_cad/">
+    <meta property="og:type" content="website">
     <title>DK CAD Pro — Professional CAD Automation Suite</title>
     <meta name="description" content="DK CAD Pro — DKCAD tool for AutoCAD. Civil 3D automation software for survey engineers. Download DK CAD tool for AutoCAD 2020 2021 2022 2023 2024 2025 2026 2027.">
     <meta name="keywords" content="DK CAD tool, DKCAD, DK CAD Pro, AutoCAD automation, civil 3D tool, survey AutoCAD tool, AutoCAD plugin India, DK CAD">
@@ -52,7 +52,104 @@
         .req-item .value { font-size: 0.95rem; color: #ccc; font-weight: 600; }
         .footer { text-align: center; padding: 40px 20px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 0.8rem; color: #444; }
         .footer a { color: #00aaff; text-decoration: none; }
-        @media (max-width: 768px) { .hero h1 { font-size: 2.2rem; } .features { grid-template-columns: 1fr; } .stats { flex-direction: column; gap: 30px; } .req-grid { grid-template-columns: 1fr; } .nav-links { display: none; } }
+
+        /* ── VIDEO THUMBNAIL ── */
+        .video-thumb {
+            display: inline-block;
+            margin-top: 28px;
+            cursor: pointer;
+            position: relative;
+            width: 260px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid rgba(0,170,255,0.3);
+            box-shadow: 0 4px 24px rgba(0,120,255,0.25);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .video-thumb:hover { transform: translateY(-3px); box-shadow: 0 8px 36px rgba(0,120,255,0.45); }
+        .video-thumb video {
+            width: 100%;
+            height: 148px;
+            object-fit: cover;
+            display: block;
+            pointer-events: none;
+        }
+        .video-thumb .watch-label {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0,0.45);
+            gap: 8px;
+        }
+        .video-thumb .play-icon {
+            width: 48px; height: 48px;
+            background: rgba(0,170,255,0.85);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .video-thumb .play-icon svg { width: 22px; height: 22px; fill: #fff; margin-left: 3px; }
+        .video-thumb .watch-text {
+            color: #fff;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ── VIDEO MODAL ── */
+        .video-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.88);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+        }
+        .video-modal.active { display: flex; }
+        .video-modal-inner {
+            position: relative;
+            width: 90vw;
+            max-width: 900px;
+            background: #111;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 12px 60px rgba(0,0,0,0.8);
+        }
+        .video-modal-inner video {
+            width: 100%;
+            display: block;
+            max-height: 80vh;
+        }
+        .modal-close {
+            position: absolute;
+            top: 10px; right: 14px;
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: #fff;
+            font-size: 1.4rem;
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            z-index: 10;
+            transition: background 0.2s;
+        }
+        .modal-close:hover { background: rgba(255,60,60,0.7); }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .features { grid-template-columns: 1fr; }
+            .stats { flex-direction: column; gap: 30px; }
+            .req-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .video-thumb { width: 220px; }
+            .video-thumb video { height: 124px; }
+        }
     </style>
 </head>
 <body>
@@ -88,6 +185,18 @@
             1. Open AutoCAD &nbsp;|&nbsp; 2. Type: <strong>ACTIVATE_DK_CAD</strong> &nbsp;|&nbsp; 3. Enter License Key
         </div>
         <div class="version-info">v1.0 &nbsp;•&nbsp; Windows 10/11 &nbsp;•&nbsp; 2.06 MB</div>
+
+        <!-- VIDEO THUMBNAIL -->
+        <div class="video-thumb" onclick="openVideo()">
+            <video src="https://dheerajkum7g7-eng.github.io/dk_cad/Demo.mp4" muted preload="metadata"></video>
+            <div class="watch-label">
+                <div class="play-icon">
+                    <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+                <span class="watch-text">▶ Watch Demo</span>
+            </div>
+        </div>
+
         <script>function showDownloadMsg(){document.getElementById('dlMsg').style.display='block';}</script>
     </section>
 
@@ -124,5 +233,33 @@
         <p style="margin-top:8px;"><a href="mailto:dheerajkum7g7@gmail.com">dheerajkum7g7@gmail.com</a></p>
     </footer>
 </div>
+
+<!-- VIDEO MODAL -->
+<div class="video-modal" id="videoModal" onclick="closeVideoOutside(event)">
+    <div class="video-modal-inner">
+        <button class="modal-close" onclick="closeVideo()">✕</button>
+        <video id="modalVideo" controls controlsList="nodownload">
+            <source src="https://dheerajkum7g7-eng.github.io/dk_cad/Demo.mp4" type="video/mp4">
+        </video>
+    </div>
+</div>
+
+<script>
+function openVideo() {
+    document.getElementById('videoModal').classList.add('active');
+    document.getElementById('modalVideo').play();
+}
+function closeVideo() {
+    document.getElementById('videoModal').classList.remove('active');
+    document.getElementById('modalVideo').pause();
+    document.getElementById('modalVideo').currentTime = 0;
+}
+function closeVideoOutside(e) {
+    if (e.target === document.getElementById('videoModal')) closeVideo();
+}
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeVideo();
+});
+</script>
 </body>
-    </html>
+</html>
