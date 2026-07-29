@@ -5,7 +5,7 @@
   "size": 65916740,
   "exeSha256": "2443AA251946550AD05714B042FCFEAF4500DF68A38EEA22361254C0D425599D",
   "exeSize": 157399803,
-  "notes": "Chhota update - sirf badle hue hisse download honge.",
+  "notes": "Performance and stability improvements. Only the changed parts are downloaded, so this update is small.",
   "mandatory": false,
   "parts": [
     "https://dheerajkum7g7-eng.github.io/dk_cad/1.1.2/DKCad3D-1.1.2.zip.part01",
