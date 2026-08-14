@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DK CAD Mobile — Download</title>
+<!--
+  Download page for DK CAD Mobile.
+
+  Upload to the dk_cad GitHub Pages repo root as  mobile.html
+  It is then live at  https://dheerajkum7g7-eng.github.io/dk_cad/mobile.html
+  and your Google Site (sites.google.com/view/dkcad3d) just links to it.
+
+  Everything is inline on purpose: no CDN, no web font, no external image.
+  The customers this is aimed at sit behind Netskope/Zscaler, which is exactly
+  where an external stylesheet or font quietly fails and the page arrives naked.
+
+  WHEN YOU RELEASE A NEW BUILD, change these three things only:
+    1. the version in the badge and the "Version 3.2" line
+    2. the .apk file name in the download link (2 places)
+    3. the size / date under the button
+-->
+<style>
+  :root{
+    --bg:#0f0f0f; --panel:#161616; --line:#262626;
+    --ink:#eaeaea; --dim:#8b8b8b; --accent:#3aa0ff; --accent-ink:#08182b;
+    --ok:#9adf9a;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:40px 20px 72px}
+  header{text-align:center;padding:28px 0 8px}
+  .logo{
+    font-size:40px;font-weight:800;letter-spacing:-.5px;color:var(--accent);
+    margin:0 0 6px
+  }
+  .tag{color:var(--dim);margin:0 0 22px;font-size:17px}
+  .badge{
+    display:inline-block;padding:4px 12px;border:1px solid var(--line);
+    border-radius:999px;color:var(--ok);font-size:13px;background:var(--panel)
+  }
+
+  .cta{text-align:center;margin:30px 0 10px}
+  .btn{
+    display:inline-block;background:var(--accent);color:var(--accent-ink);
+    text-decoration:none;font-weight:700;font-size:19px;
+    padding:16px 34px;border-radius:12px;
+  }
+  .btn:hover{filter:brightness(1.08)}
+  .meta{color:var(--dim);font-size:13px;margin-top:12px}
+
+  section{
+    background:var(--panel);border:1px solid var(--line);border-radius:14px;
+    padding:22px 24px;margin:22px 0
+  }
+  h2{font-size:17px;margin:0 0 14px;letter-spacing:.2px}
+  ul{margin:0;padding-left:20px}
+  li{margin:7px 0}
+  li b{color:#fff}
+  ol{margin:0;padding-left:22px}
+  ol li{margin:9px 0}
+  code{
+    background:#0b0b0b;border:1px solid var(--line);border-radius:5px;
+    padding:1px 6px;font-size:14px
+  }
+  .note{
+    border-left:3px solid var(--accent);background:#12202e;
+    padding:12px 16px;border-radius:0 8px 8px 0;color:#cfe6ff;font-size:14.5px
+  }
+  .soon{border-left-color:#6b6b6b;background:#1a1a1a;color:var(--dim)}
+  table{width:100%;border-collapse:collapse;font-size:14.5px}
+  td{padding:7px 0;border-bottom:1px solid var(--line);vertical-align:top}
+  td:first-child{color:var(--dim);width:42%}
+  tr:last-child td{border-bottom:0}
+  footer{text-align:center;color:#5f5f5f;font-size:13px;margin-top:38px}
+  a{color:var(--accent)}
+
+  button.btn{border:0;cursor:pointer;font-family:inherit}
+  button.btn:disabled{opacity:.55;cursor:default}
+  #bar{
+    max-width:420px;margin:16px auto 0;height:8px;background:#232323;
+    border-radius:99px;overflow:hidden;display:none
+  }
+  #fill{height:100%;width:0;background:var(--accent);transition:width .15s linear}
+  .err{color:#ff8b8b}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <p class="logo">DK CAD</p>
+    <p class="tag">Open DWG and DXF drawings on your phone.</p>
+    <span class="badge">Version 3.2 &middot; Android</span>
+  </header>
+
+  <div class="cta">
+    <button class="btn" id="dl">Download for Android</button>
+    <div id="bar"><div id="fill"></div></div>
+    <p class="meta" id="meta">Loading release details&hellip;</p>
+  </div>
+
+  <section>
+    <h2>What's new in 3.2</h2>
+    <ul>
+      <li><b>Pan and zoom no longer get stuck.</b> A touch that Android took away mid-gesture used to leave the canvas half-frozen until the app was restarted. Fixed.</li>
+      <li><b>Offset tool.</b> Tap a line, type a distance, tap the side — a parallel line, polyline, arc or circle is created.</li>
+      <li><b>Delete one measurement.</b> Tap a single coordinate marker or distance to remove just that one, instead of clearing everything.</li>
+      <li><b>Cleans up after itself.</b> The app now keeps its own storage inside a budget, so it stays healthy over months instead of slowly filling the phone.</li>
+      <li><b>Tells you about updates.</b> A new version now announces itself inside the app.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Installing</h2>
+    <ol>
+      <li>Tap <b>Download for Android</b> above.</li>
+      <li>Chrome will warn that this file type can harm your device — that warning appears for every APK that did not come from the Play Store. Choose <b>Download anyway</b>.</li>
+      <li>Open the downloaded file. Android will ask permission to install from this source — allow it once.</li>
+      <li>Tap <b>Install</b>. Installing over an older DK CAD keeps your recent files.</li>
+    </ol>
+    <p class="note">Already have DK CAD installed? Just install this on top — nothing needs to be uninstalled first.</p>
+  </section>
+
+  <section>
+    <h2>Using it</h2>
+    <table>
+      <tr><td>Opens</td><td>DWG, DXF, and DKCad's own <code>.dkc</code> cache files</td></tr>
+      <tr><td>Move around</td><td>One finger drags, two fingers pinch to zoom</td></tr>
+      <tr><td>Coordinates &amp; distances</td><td>Snap to endpoints, midpoints, centres, intersections, nodes, quadrants and perpendiculars</td></tr>
+      <tr><td>Draw</td><td>Polylines, MText, and Offset</td></tr>
+      <tr><td>Share your work</td><td>Save or share the edited drawing as DXF</td></tr>
+      <tr><td>Open from anywhere</td><td>Share a drawing to DK CAD from WhatsApp, Files, or email</td></tr>
+      <tr><td>Large drawings</td><td>A big DWG takes a while the first time; every later open is a few seconds</td></tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>iPhone and iPad</h2>
+    <p class="note soon">The iOS version is in progress and does not have a download yet. This page will carry it when it is ready.</p>
+  </section>
+
+  <footer>
+    DK CAD Mobile &middot; Version 3.2 &middot; Released 14 August 2026<br>
+    Desktop version: <a href="index.html">DK CAD 3D for Windows</a>
+  </footer>
+
+</div>
+
+<script>
+/* ───────────────────────────────────────────────────────────────────────────
+   The APK is stored on the site as 2 MB PARTS, not as one file.
+
+   Why: the machine that publishes this site sits behind a corporate proxy that
+   drops the Authorization header on large uploads to GitHub (measured: 5 MB
+   uploads fine, 10 MB comes back "401 Bad credentials" with the SAME token).
+   Small pieces are the only way to get a release published at all — the desktop
+   app's payload ships the same way, in 32 pieces.
+
+   GitHub only SERVES the pieces; it never joins them. So this page fetches every
+   part and joins them in the browser, then hands the visitor one ordinary .apk.
+   Everything below is plain fetch + Blob — no library, nothing external, so it
+   still works on a locked-down corporate connection.
+   ─────────────────────────────────────────────────────────────────────────── */
+(function () {
+  var btn  = document.getElementById('dl');
+  var meta = document.getElementById('meta');
+  var bar  = document.getElementById('bar');
+  var fill = document.getElementById('fill');
+  var rel  = null;
+
+  function mb(n) { return (n / 1048576).toFixed(0); }
+  function say(t, isErr) { meta.innerHTML = t; meta.className = isErr ? 'meta err' : 'meta'; }
+
+  /* cache-buster: GitHub Pages and every proxy in between will happily serve a
+     stale manifest, which is how "I published it and nobody saw it" happens */
+  fetch('mobile-update.json?t=' + Date.now())
+    .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+    .then(function (j) {
+      rel = j;
+      say(j.apkName + ' &middot; ' + mb(j.size) + '&nbsp;MB &middot; Android 5.0 and above');
+      btn.disabled = false;
+    })
+    .catch(function (e) {
+      say('Could not read the release details (' + e.message + '). Please try again later.', true);
+      btn.disabled = true;
+    });
+
+  btn.addEventListener('click', function () {
+    if (!rel) return;
+    btn.disabled = true;
+    bar.style.display = 'block';
+
+    var chunks = [];
+    var got = 0;
+    var i = 1;
+
+    function pad(n) { return (n < 10 ? '0' : '') + n; }
+
+    function next() {
+      if (i > rel.partCount) return finish();
+      say('Downloading&hellip; ' + mb(got) + ' / ' + mb(rel.size) + '&nbsp;MB');
+      fetch(rel.partBase + '.part' + pad(i))
+        .then(function (r) {
+          if (!r.ok) throw new Error('part ' + pad(i) + ': HTTP ' + r.status);
+          return r.arrayBuffer();
+        })
+        .then(function (buf) {
+          chunks.push(buf);
+          got += buf.byteLength;
+          fill.style.width = (got / rel.size * 100).toFixed(1) + '%';
+          i++;
+          next();
+        })
+        .catch(fail);
+    }
+
+    function finish() {
+      /* the size check is the honest one: a truncated or mis-ordered join would
+         otherwise produce an .apk that only fails at install time */
+      if (got !== rel.size) {
+        return fail(new Error('assembled ' + got + ' bytes, expected ' + rel.size));
+      }
+      var blob = new Blob(chunks, { type: 'application/vnd.android.package-archive' });
+      chunks.length = 0;                       /* let the phone reclaim the parts */
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = rel.apkName;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(function () { URL.revokeObjectURL(url); }, 120000);
+
+      fill.style.width = '100%';
+      say('Ready — check your notifications or Downloads folder, then open ' +
+          rel.apkName + ' to install.');
+      btn.disabled = false;
+      btn.textContent = 'Download again';
+    }
+
+    function fail(e) {
+      chunks.length = 0;
+      bar.style.display = 'none';
+      say('Download failed: ' + e.message +
+          '.<br>Check your connection and press the button again — it restarts from the beginning.', true);
+      btn.disabled = false;
+    }
+
+    next();
+  });
+})();
+</script>
+</body>
+</html>
