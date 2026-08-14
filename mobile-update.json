@@ -1,17 +1,18 @@
-{
+﻿{
   "_comment": "DK CAD Mobile release manifest. Lives in the dk_cad Pages repo ROOT as mobile-update.json; the app reads it from https://dheerajkum7g7-eng.github.io/dk_cad/mobile-update.json with the raw.githubusercontent copy as a mirror. The APK is stored as 2 MB PARTS because the publishing network's proxy rejects large authenticated uploads; GitHub does not join them, mobile.html does. To ship a new build: run publish-mobile.ps1, which rewrites version/size/sha256/partCount here. Keep this file SEPARATE from the desktop's update.json.",
 
-  "version": "3.2",
+  "version": "3.3",
   "url": "https://github.com/dheerajkum7g7-eng/dk_cad/releases/download/MV/DKCadMobile.apk",
   "_urlNote": "The SAME release asset the Google Sites download button points at, so there is one download in the world, not two. Release MV / DKCadMobile.apk is replaced in place on every version - the website link never changes. mobile.html on Pages is a BACKUP route for networks where github.com is blocked (this office's own laptops get 403 there).",
   "altUrl": "https://dheerajkum7g7-eng.github.io/dk_cad/mobile.html",
-  "notes": "Faster, steadier touch: pan/zoom no longer gets stuck. Offset tool. Delete one measurement instead of all. Automatic storage cleanup.",
+  "notes": "Erase anything: tap one line, text, block, dimension, marker or distance to delete just that. Plus the offset tool, steadier pan/zoom, and automatic storage cleanup.",
   "mandatory": false,
 
-  "apkName": "DKCad_v3.2.apk",
-  "partBase": "https://dheerajkum7g7-eng.github.io/dk_cad/mobile/3.2/DKCad_v3.2.apk",
+  "apkName": "DKCad_v3.3.apk",
+  "partBase": "https://dheerajkum7g7-eng.github.io/dk_cad/mobile/3.3/DKCad_v3.3.apk",
   "partCount": 44,
-  "size": 91961902,
-  "sha256": "5D7E39C530069ED35D0B3ED2E5C31886C203BC5535830621A2860E3F0D4E6DB4",
+  "size": 91978286,
+  "sha256": "65BFB79BFC6D7B6CE4822100FC4CCFD5A9906447A68D06C397CB5EDE6944D6EF",
   "released": "2026-08-14"
 }
+

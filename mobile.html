@@ -3,22 +3,29 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>DK CAD Mobile — Download</title>
+<title>DK CAD Mobile &mdash; Download</title>
 <!--
-  Download page for DK CAD Mobile.
+  BACKUP download page for DK CAD Mobile.
 
-  Upload to the dk_cad GitHub Pages repo root as  mobile.html
-  It is then live at  https://dheerajkum7g7-eng.github.io/dk_cad/mobile.html
-  and your Google Site (sites.google.com/view/dkcad3d) just links to it.
+  The MAIN download is the GitHub release asset that the Google Site links to:
+    https://github.com/dheerajkum7g7-eng/dk_cad/releases/download/MV/DKCadMobile.apk
+  Every new build replaces that asset in place, so the website link never
+  changes. This page exists for networks where github.com is blocked (this
+  office's own laptops get 403 there) - it serves the same APK from GitHub
+  Pages, stored as 2 MB parts and joined in the browser.
 
-  Everything is inline on purpose: no CDN, no web font, no external image.
-  The customers this is aimed at sit behind Netskope/Zscaler, which is exactly
-  where an external stylesheet or font quietly fails and the page arrives naked.
+  Live at https://dheerajkum7g7-eng.github.io/dk_cad/mobile.html
 
-  WHEN YOU RELEASE A NEW BUILD, change these three things only:
-    1. the version in the badge and the "Version 3.2" line
-    2. the .apk file name in the download link (2 places)
-    3. the size / date under the button
+  Everything is inline on purpose: no CDN, no web font, no external image. The
+  customers this is aimed at sit behind Netskope/Zscaler, which is exactly where
+  an external stylesheet or font quietly fails and the page arrives naked.
+
+  NOTE: written with HTML entities instead of literal typographic characters.
+  A PowerShell rewrite of this file once double-encoded every em dash into
+  mojibake; entities cannot be corrupted that way.
+
+  Release checklist: publish-mobile.ps1 stamps mobile-update.json; only the
+  version numbers below are hand-edited.
 -->
 <style>
   :root{
@@ -34,10 +41,7 @@
   }
   .wrap{max-width:760px;margin:0 auto;padding:40px 20px 72px}
   header{text-align:center;padding:28px 0 8px}
-  .logo{
-    font-size:40px;font-weight:800;letter-spacing:-.5px;color:var(--accent);
-    margin:0 0 6px
-  }
+  .logo{font-size:40px;font-weight:800;letter-spacing:-.5px;color:var(--accent);margin:0 0 6px}
   .tag{color:var(--dim);margin:0 0 22px;font-size:17px}
   .badge{
     display:inline-block;padding:4px 12px;border:1px solid var(--line);
@@ -48,10 +52,17 @@
   .btn{
     display:inline-block;background:var(--accent);color:var(--accent-ink);
     text-decoration:none;font-weight:700;font-size:19px;
-    padding:16px 34px;border-radius:12px;
+    padding:16px 34px;border-radius:12px;border:0;cursor:pointer;font-family:inherit
   }
   .btn:hover{filter:brightness(1.08)}
+  .btn:disabled{opacity:.55;cursor:default}
   .meta{color:var(--dim);font-size:13px;margin-top:12px}
+  #bar{
+    max-width:420px;margin:16px auto 0;height:8px;background:#232323;
+    border-radius:99px;overflow:hidden;display:none
+  }
+  #fill{height:100%;width:0;background:var(--accent);transition:width .15s linear}
+  .err{color:#ff8b8b}
 
   section{
     background:var(--panel);border:1px solid var(--line);border-radius:14px;
@@ -63,10 +74,7 @@
   li b{color:#fff}
   ol{margin:0;padding-left:22px}
   ol li{margin:9px 0}
-  code{
-    background:#0b0b0b;border:1px solid var(--line);border-radius:5px;
-    padding:1px 6px;font-size:14px
-  }
+  code{background:#0b0b0b;border:1px solid var(--line);border-radius:5px;padding:1px 6px;font-size:14px}
   .note{
     border-left:3px solid var(--accent);background:#12202e;
     padding:12px 16px;border-radius:0 8px 8px 0;color:#cfe6ff;font-size:14.5px
@@ -78,15 +86,6 @@
   tr:last-child td{border-bottom:0}
   footer{text-align:center;color:#5f5f5f;font-size:13px;margin-top:38px}
   a{color:var(--accent)}
-
-  button.btn{border:0;cursor:pointer;font-family:inherit}
-  button.btn:disabled{opacity:.55;cursor:default}
-  #bar{
-    max-width:420px;margin:16px auto 0;height:8px;background:#232323;
-    border-radius:99px;overflow:hidden;display:none
-  }
-  #fill{height:100%;width:0;background:var(--accent);transition:width .15s linear}
-  .err{color:#ff8b8b}
 </style>
 </head>
 <body>
@@ -95,7 +94,7 @@
   <header>
     <p class="logo">DK CAD</p>
     <p class="tag">Open DWG and DXF drawings on your phone.</p>
-    <span class="badge">Version 3.2 &middot; Android</span>
+    <span class="badge">Version 3.3 &middot; Android</span>
   </header>
 
   <div class="cta">
@@ -105,11 +104,11 @@
   </div>
 
   <section>
-    <h2>What's new in 3.2</h2>
+    <h2>What&rsquo;s new in 3.3</h2>
     <ul>
+      <li><b>Erase anything.</b> Tap one line, polyline, arc, circle, text, block or dimension to delete just that one thing &mdash; and the same for a coordinate marker or a distance.</li>
       <li><b>Pan and zoom no longer get stuck.</b> A touch that Android took away mid-gesture used to leave the canvas half-frozen until the app was restarted. Fixed.</li>
-      <li><b>Offset tool.</b> Tap a line, type a distance, tap the side — a parallel line, polyline, arc or circle is created.</li>
-      <li><b>Delete one measurement.</b> Tap a single coordinate marker or distance to remove just that one, instead of clearing everything.</li>
+      <li><b>Offset tool.</b> Tap a line, type a distance, tap the side &mdash; a parallel line, polyline, arc or circle is created.</li>
       <li><b>Cleans up after itself.</b> The app now keeps its own storage inside a budget, so it stays healthy over months instead of slowly filling the phone.</li>
       <li><b>Tells you about updates.</b> A new version now announces itself inside the app.</li>
     </ul>
@@ -119,20 +118,20 @@
     <h2>Installing</h2>
     <ol>
       <li>Tap <b>Download for Android</b> above.</li>
-      <li>Chrome will warn that this file type can harm your device — that warning appears for every APK that did not come from the Play Store. Choose <b>Download anyway</b>.</li>
-      <li>Open the downloaded file. Android will ask permission to install from this source — allow it once.</li>
+      <li>Chrome will warn that this file type can harm your device &mdash; that warning appears for every APK that did not come from the Play Store. Choose <b>Download anyway</b>.</li>
+      <li>Open the downloaded file. Android will ask permission to install from this source &mdash; allow it once.</li>
       <li>Tap <b>Install</b>. Installing over an older DK CAD keeps your recent files.</li>
     </ol>
-    <p class="note">Already have DK CAD installed? Just install this on top — nothing needs to be uninstalled first.</p>
+    <p class="note">Already have DK CAD installed? Just install this on top &mdash; nothing needs to be uninstalled first.</p>
   </section>
 
   <section>
     <h2>Using it</h2>
     <table>
-      <tr><td>Opens</td><td>DWG, DXF, and DKCad's own <code>.dkc</code> cache files</td></tr>
+      <tr><td>Opens</td><td>DWG, DXF, and DK CAD&rsquo;s own <code>.dkc</code> cache files</td></tr>
       <tr><td>Move around</td><td>One finger drags, two fingers pinch to zoom</td></tr>
       <tr><td>Coordinates &amp; distances</td><td>Snap to endpoints, midpoints, centres, intersections, nodes, quadrants and perpendiculars</td></tr>
-      <tr><td>Draw</td><td>Polylines, MText, and Offset</td></tr>
+      <tr><td>Draw and edit</td><td>Polylines, MText, Offset, Erase</td></tr>
       <tr><td>Share your work</td><td>Save or share the edited drawing as DXF</td></tr>
       <tr><td>Open from anywhere</td><td>Share a drawing to DK CAD from WhatsApp, Files, or email</td></tr>
       <tr><td>Large drawings</td><td>A big DWG takes a while the first time; every later open is a few seconds</td></tr>
@@ -145,27 +144,26 @@
   </section>
 
   <footer>
-    DK CAD Mobile &middot; Version 3.2 &middot; Released 14 August 2026<br>
+    DK CAD Mobile &middot; Version 3.3 &middot; Released 14 August 2026<br>
     Desktop version: <a href="index.html">DK CAD 3D for Windows</a>
   </footer>
 
 </div>
 
 <script>
-/* ───────────────────────────────────────────────────────────────────────────
-   The APK is stored on the site as 2 MB PARTS, not as one file.
+/* ---------------------------------------------------------------------------
+   On this page the APK is served as 2 MB PARTS, not as one file.
 
    Why: the machine that publishes this site sits behind a corporate proxy that
-   drops the Authorization header on large uploads to GitHub (measured: 5 MB
-   uploads fine, 10 MB comes back "401 Bad credentials" with the SAME token).
-   Small pieces are the only way to get a release published at all — the desktop
-   app's payload ships the same way, in 32 pieces.
+   drops the Authorization header on large uploads to api.github.com (measured:
+   5 MB uploads fine, 10 MB comes back "401 Bad credentials" with the SAME
+   token). Small pieces are the only way to publish to Pages from there.
 
-   GitHub only SERVES the pieces; it never joins them. So this page fetches every
-   part and joins them in the browser, then hands the visitor one ordinary .apk.
-   Everything below is plain fetch + Blob — no library, nothing external, so it
-   still works on a locked-down corporate connection.
-   ─────────────────────────────────────────────────────────────────────────── */
+   GitHub only SERVES the pieces; it never joins them. So this page fetches
+   every part and joins them in the browser, then hands the visitor one ordinary
+   .apk. Plain fetch + Blob, nothing external, so it still works on a locked
+   down corporate connection.
+   --------------------------------------------------------------------------- */
 (function () {
   var btn  = document.getElementById('dl');
   var meta = document.getElementById('meta');
@@ -237,7 +235,7 @@
       setTimeout(function () { URL.revokeObjectURL(url); }, 120000);
 
       fill.style.width = '100%';
-      say('Ready — check your notifications or Downloads folder, then open ' +
+      say('Ready &mdash; check your notifications or Downloads folder, then open ' +
           rel.apkName + ' to install.');
       btn.disabled = false;
       btn.textContent = 'Download again';
@@ -247,7 +245,7 @@
       chunks.length = 0;
       bar.style.display = 'none';
       say('Download failed: ' + e.message +
-          '.<br>Check your connection and press the button again — it restarts from the beginning.', true);
+          '.<br>Check your connection and press the button again &mdash; it restarts from the beginning.', true);
       btn.disabled = false;
     }
 
