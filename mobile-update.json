@@ -1,0 +1,15 @@
+{
+  "_comment": "DK CAD Mobile release manifest. Lives in the dk_cad Pages repo ROOT as mobile-update.json; the app reads it from https://dheerajkum7g7-eng.github.io/dk_cad/mobile-update.json with the raw.githubusercontent copy as a mirror. The APK is stored as 2 MB PARTS because the publishing network's proxy rejects large authenticated uploads; GitHub does not join them, mobile.html does. To ship a new build: run publish-mobile.ps1, which rewrites version/size/sha256/partCount here. Keep this file SEPARATE from the desktop's update.json.",
+
+  "version": "3.2",
+  "url": "https://dheerajkum7g7-eng.github.io/dk_cad/mobile.html",
+  "notes": "Faster, steadier touch: pan/zoom no longer gets stuck. Offset tool. Delete one measurement instead of all. Automatic storage cleanup.",
+  "mandatory": false,
+
+  "apkName": "DKCad_v3.2.apk",
+  "partBase": "https://dheerajkum7g7-eng.github.io/dk_cad/mobile/3.2/DKCad_v3.2.apk",
+  "partCount": 44,
+  "size": 91961902,
+  "sha256": "5D7E39C530069ED35D0B3ED2E5C31886C203BC5535830621A2860E3F0D4E6DB4",
+  "released": "2026-08-14"
+}
