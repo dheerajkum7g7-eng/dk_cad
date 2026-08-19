@@ -1,18 +1,19 @@
 ﻿{
   "_comment": "DK CAD Mobile release manifest. Lives in the dk_cad Pages repo ROOT as mobile-update.json; the app reads it from https://dheerajkum7g7-eng.github.io/dk_cad/mobile-update.json with the raw.githubusercontent copy as a mirror. The APK is stored as 2 MB PARTS because the publishing network's proxy rejects large authenticated uploads; GitHub does not join them, mobile.html does. To ship a new build: run publish-mobile.ps1, which rewrites version/size/sha256/partCount here. Keep this file SEPARATE from the desktop's update.json.",
 
-  "version": "3.3",
+  "version": "3.4",
   "url": "https://github.com/dheerajkum7g7-eng/dk_cad/releases/download/MV/DKCadMobile.apk",
   "_urlNote": "The SAME release asset the Google Sites download button points at, so there is one download in the world, not two. Release MV / DKCadMobile.apk is replaced in place on every version - the website link never changes. mobile.html on Pages is a BACKUP route for networks where github.com is blocked (this office's own laptops get 403 there).",
   "altUrl": "https://dheerajkum7g7-eng.github.io/dk_cad/mobile.html",
-  "notes": "Erase anything: tap one line, text, block, dimension, marker or distance to delete just that. Plus the offset tool, steadier pan/zoom, and automatic storage cleanup.",
+  "notes": "White or black drawing sheet: switch from the bottom bar, and white lines and text turn dark so nothing disappears. Plus Find - search any text or mtext in the drawing and jump straight to it.",
   "mandatory": false,
 
-  "apkName": "DKCad_v3.3.apk",
-  "partBase": "https://dheerajkum7g7-eng.github.io/dk_cad/mobile/3.3/DKCad_v3.3.apk",
+  "apkName": "DKCad_v3.4.apk",
+  "partBase": "https://dheerajkum7g7-eng.github.io/dk_cad/mobile/3.4/DKCad_v3.4.apk",
   "partCount": 44,
-  "size": 91978286,
-  "sha256": "65BFB79BFC6D7B6CE4822100FC4CCFD5A9906447A68D06C397CB5EDE6944D6EF",
-  "released": "2026-08-14"
+  "size": 92052014,
+  "sha256": "25E32150A644D2FF5D5C29458105F94EFB8D2AD445C96975EC39771578431918",
+  "released": "2026-08-19"
 }
+
 
