@@ -1,20 +1,21 @@
 ﻿{
   "_comment": "DK CAD Mobile release manifest. Lives in the dk_cad Pages repo ROOT as mobile-update.json; the app reads it from https://dheerajkum7g7-eng.github.io/dk_cad/mobile-update.json with the raw.githubusercontent copy as a mirror. The APK is stored as 2 MB PARTS because the publishing network's proxy rejects large authenticated uploads; GitHub does not join them, mobile.html does. To ship a new build: run publish-mobile.ps1, which rewrites version/size/sha256/partCount here. Keep this file SEPARATE from the desktop's update.json.",
 
-  "version": "3.6",
+  "version": "3.7",
   "url": "https://github.com/dheerajkum7g7-eng/dk_cad/releases/download/MV/DKCadMobile.apk",
   "_urlNote": "The SAME release asset the Google Sites download button points at, so there is one download in the world, not two. Release MV / DKCadMobile.apk is replaced in place on every version - the website link never changes. mobile.html on Pages is a BACKUP route for networks where github.com is blocked (this office's own laptops get 403 there).",
   "altUrl": "https://dheerajkum7g7-eng.github.io/dk_cad/mobile.html",
-  "notes": "Set your own label size. The X/Y and distance labels stay the same size on screen at every zoom - now you choose how big that is, from the box in the bottom bar. Your setting is remembered.",
+    "notes": "Labels now belong to the drawing. The X/Y and distance labels grow and shrink with the drawing as you zoom, the way text in a CAD drawing does - so a label always covers the same part of the plan. Set how big with the Label scale box in the bottom bar (1 to 48, 1 is the standard label). Your setting is remembered.",
   "mandatory": false,
 
-  "apkName": "DKCad_v3.6.apk",
-  "partBase": "https://dheerajkum7g7-eng.github.io/dk_cad/mobile/3.6/DKCad_v3.6.apk",
+  "apkName": "DKCad_v3.7.apk",
+  "partBase": "https://dheerajkum7g7-eng.github.io/dk_cad/mobile/3.7/DKCad_v3.7.apk",
   "partCount": 19,
-  "size": 39778553,
-  "sha256": "8978662A97D8303F75D6E556AF8AECAD0707E48E27947DB0E0CD98511F9F7941",
+  "size": 39782649,
+  "sha256": "C24E0A7490596B9ECD8641388DE97A2FF8ED9D1AFA6504C60E4D22F60D1404B0",
   "released": "2026-08-19"
 }
+
 
 
 
