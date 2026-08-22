@@ -1,18 +1,18 @@
 ﻿{
   "_comment": "DK CAD Mobile release manifest. Lives in the dk_cad Pages repo ROOT as mobile-update.json; the app reads it from https://dheerajkum7g7-eng.github.io/dk_cad/mobile-update.json with the raw.githubusercontent copy as a mirror. The APK is stored as 2 MB PARTS because the publishing network's proxy rejects large authenticated uploads; GitHub does not join them, mobile.html does. To ship a new build: run publish-mobile.ps1, which rewrites version/size/sha256/partCount here. Keep this file SEPARATE from the desktop's update.json.",
 
-  "version": "4.1",
+  "version": "4.2",
   "url": "https://github.com/dheerajkum7g7-eng/dk_cad/releases/download/MV/DKCadMobile.apk",
   "_urlNote": "The SAME release asset the Google Sites download button points at, so there is one download in the world, not two. Release MV / DKCadMobile.apk is replaced in place on every version - the website link never changes. mobile.html on Pages is a BACKUP route for networks where github.com is blocked (this office's own laptops get 403 there).",
   "altUrl": "https://dheerajkum7g7-eng.github.io/dk_cad/mobile.html",
-  "notes": "Locate is now usable in the field. The direction is a proper red compass needle whose sharp tip is the way to walk, and it turns smoothly as you turn. The distance updates on every step instead of jumping every twenty metres: DK CAD now asks Android for the GPS itself, at twice a second with no distance filter, so 30 becomes 29 becomes 28 as you walk. The metres are measured on the drawing's own survey grid in full precision rather than on an average sphere - an exact 100.000 m now reads 100.000 m, where before it read 100.5 m. And the cross closes the card: it was being swallowed by the panel behind it, so the only way out was the back button.",
+  "notes": "The metres now move with every single pace. The count used to show whole metres once you were more than ten away, so a step forward at 28 m still read 28 m and the screen looked stuck while you were plainly walking - it now carries a decimal all the way out to 100 m, so 28.4 becomes 27.8 becomes 27.2 as you walk. Being a real satellite reading, the last digit will fidget by a metre or so while you stand still. You can also tap ANY bare spot on the drawing now, not only something drawn - the corner of a plot, a place between two poles. Whatever you pick gets a cyan ring and crosshair on the drawing, and a tapped text, block or line is outlined too, so it is obvious you got the one you meant. Locate stays on after a tap, so each new tap moves the target; press Locate again to stop.",
   "mandatory": false,
 
-  "apkName": "DKCad_v4.1.apk",
-  "partBase": "https://dheerajkum7g7-eng.github.io/dk_cad/mobile/4.1/DKCad_v4.1.apk",
+  "apkName": "DKCad_v4.2.apk",
+  "partBase": "https://dheerajkum7g7-eng.github.io/dk_cad/mobile/4.2/DKCad_v4.2.apk",
   "partCount": 20,
-  "size": 40163577,
-  "sha256": "0F82324996DD53A4826797F6FA270EF8B2192D03883E4A1F3BABF5319948EF53",
+  "size": 40167673,
+  "sha256": "8C122190C7D6DB3C5AD15663045263C8021D1928D4A9594EE10AAD4C1AEE8FF8",
   "released": "2026-08-22"
 }
 
