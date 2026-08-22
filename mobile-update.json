@@ -1,18 +1,18 @@
 ﻿{
   "_comment": "DK CAD Mobile release manifest. Lives in the dk_cad Pages repo ROOT as mobile-update.json; the app reads it from https://dheerajkum7g7-eng.github.io/dk_cad/mobile-update.json with the raw.githubusercontent copy as a mirror. The APK is stored as 2 MB PARTS because the publishing network's proxy rejects large authenticated uploads; GitHub does not join them, mobile.html does. To ship a new build: run publish-mobile.ps1, which rewrites version/size/sha256/partCount here. Keep this file SEPARATE from the desktop's update.json.",
 
-  "version": "4.0",
+  "version": "4.1",
   "url": "https://github.com/dheerajkum7g7-eng/dk_cad/releases/download/MV/DKCadMobile.apk",
   "_urlNote": "The SAME release asset the Google Sites download button points at, so there is one download in the world, not two. Release MV / DKCadMobile.apk is replaced in place on every version - the website link never changes. mobile.html on Pages is a BACKUP route for networks where github.com is blocked (this office's own laptops get 403 there).",
   "altUrl": "https://dheerajkum7g7-eng.github.io/dk_cad/mobile.html",
-  "notes": "Walk to any object in the drawing, inside DK CAD. Tap Locate in the bottom bar, then tap a point, block, line, text or corner. A card appears with a big arrow and the distance in metres - hold the phone up, walk the way the arrow points, and the number counts down as you go: 30 m, 20 m, 15 m, until it says you are here. No maps app opens, no roads, no route - just the direction and how far. Close it with the cross and the GPS is released. Drawings that are not georeferenced (a local 0,0 site grid, a title block in millimetres) are refused with a reason instead of pointing you somewhere wrong.",
+  "notes": "Locate is now usable in the field. The direction is a proper red compass needle whose sharp tip is the way to walk, and it turns smoothly as you turn. The distance updates on every step instead of jumping every twenty metres: DK CAD now asks Android for the GPS itself, at twice a second with no distance filter, so 30 becomes 29 becomes 28 as you walk. The metres are measured on the drawing's own survey grid in full precision rather than on an average sphere - an exact 100.000 m now reads 100.000 m, where before it read 100.5 m. And the cross closes the card: it was being swallowed by the panel behind it, so the only way out was the back button.",
   "mandatory": false,
 
-  "apkName": "DKCad_v4.0.apk",
-  "partBase": "https://dheerajkum7g7-eng.github.io/dk_cad/mobile/4.0/DKCad_v4.0.apk",
+  "apkName": "DKCad_v4.1.apk",
+  "partBase": "https://dheerajkum7g7-eng.github.io/dk_cad/mobile/4.1/DKCad_v4.1.apk",
   "partCount": 20,
-  "size": 40151289,
-  "sha256": "3C45817EF7FC70F43AF7B0C13176E36A55E97DCB5D8D06D57F528C6F7CA7B0EA",
+  "size": 40163577,
+  "sha256": "0F82324996DD53A4826797F6FA270EF8B2192D03883E4A1F3BABF5319948EF53",
   "released": "2026-08-22"
 }
 
