@@ -1,19 +1,19 @@
 ﻿{
   "_comment": "DK CAD Mobile release manifest. Lives in the dk_cad Pages repo ROOT as mobile-update.json; the app reads it from https://dheerajkum7g7-eng.github.io/dk_cad/mobile-update.json with the raw.githubusercontent copy as a mirror. The APK is stored as 2 MB PARTS because the publishing network's proxy rejects large authenticated uploads; GitHub does not join them, mobile.html does. To ship a new build: run publish-mobile.ps1, which rewrites version/size/sha256/partCount here. Keep this file SEPARATE from the desktop's update.json.",
 
-  "version": "3.8",
+  "version": "3.9",
   "url": "https://github.com/dheerajkum7g7-eng/dk_cad/releases/download/MV/DKCadMobile.apk",
   "_urlNote": "The SAME release asset the Google Sites download button points at, so there is one download in the world, not two. Release MV / DKCadMobile.apk is replaced in place on every version - the website link never changes. mobile.html on Pages is a BACKUP route for networks where github.com is blocked (this office's own laptops get 403 there).",
   "altUrl": "https://dheerajkum7g7-eng.github.io/dk_cad/mobile.html",
-  "notes": "Labels now belong to the drawing. The X/Y and distance labels grow and shrink with the drawing as you zoom, the way text in a CAD drawing does - so a label always covers the same part of the plan. Set how big with the Label scale box in the bottom bar: the range is 0.001 to 10, and on a survey plan you will usually want well below 1. Your setting is remembered.",
+  "notes": "Navigate to anything in the drawing. Tap the new Navigate button in the bottom bar, then tap a point, block, line, text or corner - the app works out where that is on the ground and hands it to your phone's maps app for turn-by-turn directions. You can also just show it on the map or copy the latitude and longitude. It uses your location once to work out which UTM zone the drawing is in, and you can type the zone by hand instead. Drawings that are not georeferenced (a local 0,0 site grid, a title block in millimetres) are refused with a reason rather than sent to a wrong place.",
   "mandatory": false,
 
-  "apkName": "DKCad_v3.8.apk",
-  "partBase": "https://dheerajkum7g7-eng.github.io/dk_cad/mobile/3.8/DKCad_v3.8.apk",
-  "partCount": 19,
-  "size": 39782649,
-  "sha256": "F017A88A0F005FD854F774FDC02B0F0298ADDA1970995FBE6220234302B85C16",
-  "released": "2026-08-19"
+  "apkName": "DKCad_v3.9.apk",
+  "partBase": "https://dheerajkum7g7-eng.github.io/dk_cad/mobile/3.9/DKCad_v3.9.apk",
+  "partCount": 20,
+  "size": 40139001,
+  "sha256": "A7E4073A4807E136B8ECCEC1AA7EC246261F77888FF10990A508B513F5619959",
+  "released": "2026-08-22"
 }
 
 
