@@ -1,19 +1,19 @@
 ﻿{
   "_comment": "DK CAD Mobile release manifest. Lives in the dk_cad Pages repo ROOT as mobile-update.json; the app reads it from https://dheerajkum7g7-eng.github.io/dk_cad/mobile-update.json with the raw.githubusercontent copy as a mirror. The APK is stored as 2 MB PARTS because the publishing network's proxy rejects large authenticated uploads; GitHub does not join them, mobile.html does. To ship a new build: run publish-mobile.ps1, which rewrites version/size/sha256/partCount here. Keep this file SEPARATE from the desktop's update.json.",
 
-  "version": "4.2",
+  "version": "4.3",
   "url": "https://github.com/dheerajkum7g7-eng/dk_cad/releases/download/MV/DKCadMobile.apk",
   "_urlNote": "The SAME release asset the Google Sites download button points at, so there is one download in the world, not two. Release MV / DKCadMobile.apk is replaced in place on every version - the website link never changes. mobile.html on Pages is a BACKUP route for networks where github.com is blocked (this office's own laptops get 403 there).",
   "altUrl": "https://dheerajkum7g7-eng.github.io/dk_cad/mobile.html",
-  "notes": "The metres now move with every single pace. The count used to show whole metres once you were more than ten away, so a step forward at 28 m still read 28 m and the screen looked stuck while you were plainly walking - it now carries a decimal all the way out to 100 m, so 28.4 becomes 27.8 becomes 27.2 as you walk. Being a real satellite reading, the last digit will fidget by a metre or so while you stand still. You can also tap ANY bare spot on the drawing now, not only something drawn - the corner of a plot, a place between two poles. Whatever you pick gets a cyan ring and crosshair on the drawing, and a tapped text, block or line is outlined too, so it is obvious you got the one you meant. Locate stays on after a tap, so each new tap moves the target; press Locate again to stop.",
+  "notes": "Locate now walks you to the exact spot you touched. Until now a tap was pulled onto whatever was drawn nearby - a text jumped to its insertion point, a line to its nearest corner - so the place you meant and the place the arrow counted down to were not the same, and the gap grew the further out you were zoomed. Now the target is the coordinate under your finger, full stop, marked with a cyan crosshair so you can see exactly which point the distance and arrow are working from. Tap again anywhere to move it; press Locate again to stop. The distance, the arrow and the satellite updates are unchanged.",
   "mandatory": false,
 
-  "apkName": "DKCad_v4.2.apk",
-  "partBase": "https://dheerajkum7g7-eng.github.io/dk_cad/mobile/4.2/DKCad_v4.2.apk",
+  "apkName": "DKCad_v4.3.apk",
+  "partBase": "https://dheerajkum7g7-eng.github.io/dk_cad/mobile/4.3/DKCad_v4.3.apk",
   "partCount": 20,
   "size": 40167673,
-  "sha256": "8C122190C7D6DB3C5AD15663045263C8021D1928D4A9594EE10AAD4C1AEE8FF8",
-  "released": "2026-08-22"
+  "sha256": "DD5A76299F77211A432B1A4328520CEC2553744133B29C8F61942FA8FA32F4D4",
+  "released": "2026-08-23"
 }
 
 
