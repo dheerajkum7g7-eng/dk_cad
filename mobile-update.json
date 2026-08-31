@@ -1,19 +1,19 @@
 ﻿{
   "_comment": "DK CAD Mobile release manifest. Lives in the dk_cad Pages repo ROOT as mobile-update.json; the app reads it from https://dheerajkum7g7-eng.github.io/dk_cad/mobile-update.json with the raw.githubusercontent copy as a mirror. The APK is stored as 2 MB PARTS because the publishing network's proxy rejects large authenticated uploads; GitHub does not join them, mobile.html does. To ship a new build: run publish-mobile.ps1, which rewrites version/size/sha256/partCount here. Keep this file SEPARATE from the desktop's update.json.",
 
-  "version": "4.3",
+  "version": "4.9",
   "url": "https://github.com/dheerajkum7g7-eng/dk_cad/releases/download/MV/DKCadMobile.apk",
   "_urlNote": "The SAME release asset the Google Sites download button points at, so there is one download in the world, not two. Release MV / DKCadMobile.apk is replaced in place on every version - the website link never changes. mobile.html on Pages is a BACKUP route for networks where github.com is blocked (this office's own laptops get 403 there).",
   "altUrl": "https://dheerajkum7g7-eng.github.io/dk_cad/mobile.html",
-  "notes": "Locate now walks you to the exact spot you touched. Until now a tap was pulled onto whatever was drawn nearby - a text jumped to its insertion point, a line to its nearest corner - so the place you meant and the place the arrow counted down to were not the same, and the gap grew the further out you were zoomed. Now the target is the coordinate under your finger, full stop, marked with a cyan crosshair so you can see exactly which point the distance and arrow are working from. Tap again anywhere to move it; press Locate again to stop. The distance, the arrow and the satellite updates are unchanged.",
+  "notes": "A new UTM tool: tap anywhere on the drawing and each point is numbered on screen and listed underneath with its Easting/Northing AND its latitude and longitude. Copy All puts the whole list on the clipboard - it pastes into Excel as columns, reads fine in WhatsApp, and the lat/long lines paste straight into Google Earth. Snapping now reaches INSIDE blocks: endpoints, midpoints, intersections and nodes of the lines within a block symbol can be picked at last, and a new INS button snaps to the insertion point of text and MText. The coordinate and distance labels are fixed-size again - they no longer grow with the zoom until one reading covers the drawing - and they stay beside the point you tapped instead of being pushed into a corner. The toolbar is rebuilt in three slim rows: global actions on top, all the drawing tools in their own scrolling row (one button each, no menu), then the snap toggles - which leaves noticeably more of the screen for the drawing.",
   "mandatory": false,
 
-  "apkName": "DKCad_v4.3.apk",
-  "partBase": "https://dheerajkum7g7-eng.github.io/dk_cad/mobile/4.3/DKCad_v4.3.apk",
+  "apkName": "DKCad_v4.9.apk",
+  "partBase": "https://dheerajkum7g7-eng.github.io/dk_cad/mobile/4.9/DKCad_v4.9.apk",
   "partCount": 20,
-  "size": 40167673,
-  "sha256": "DD5A76299F77211A432B1A4328520CEC2553744133B29C8F61942FA8FA32F4D4",
-  "released": "2026-08-23"
+  "size": 40249593,
+  "sha256": "EFC5CAD8DA827CB8A3D89A42772A2B5578111189A7AD48C2C3AF840D719A7D45",
+  "released": "2026-08-31"
 }
 
 
