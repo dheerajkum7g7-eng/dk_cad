@@ -94,7 +94,7 @@
   <header>
     <p class="logo">DK CAD</p>
     <p class="tag">Open DWG and DXF drawings on your phone.</p>
-    <span class="badge">Version 5.0 &middot; Android</span>
+    <span class="badge">Version 5.1 &middot; Android</span>
   </header>
 
   <div class="cta">
@@ -104,7 +104,15 @@
   </div>
 
   <section>
-    <h2>What&rsquo;s new in 5.0</h2>
+    <h2>What&rsquo;s new in 5.1</h2>
+    <ul>
+      <li><b>Label height is an absolute value again.</b> The box in the bottom bar opens at exactly <b>1.0</b> in every drawing and accepts anything from <b>0.0001 to 100</b>. It is no longer calculated from the drawing&rsquo;s extents, so it will not open at 730 in one file and 0.0075 in another, and there is no per-drawing minimum to get stuck against.</li>
+      <li><b>The coordinate leader stays put.</b> Its direction is fixed at the moment the point is picked, so the arrow and its text no longer flip from one side to the other as you zoom.</li>
+      <li><b>The UTM picker now snaps.</b> Endpoints, midpoints, intersections, nodes &mdash; and geometry <b>inside blocks</b> &mdash; exactly like the drawing tools.</li>
+      <li><b>A complete readout for every point.</b> The panel shows the drawing&rsquo;s own <b>X,Y</b>, the <b>UTM easting/northing with the zone and MGRS band</b> (for example <b>43Q</b>) worked out from the point itself, and the <b>WGS84 latitude and longitude</b>.</li>
+      <li><b>Georeferenced drawings are recognised properly.</b> Whether a drawing is on a survey grid is now decided by a vote of its geometry rather than by the centre of its bounding box, so a single stray object at the origin no longer causes a valid survey to be reported as local. A genuinely local drawing is labelled <b>Local Coordinate</b> and is given no UTM zone at all.</li>
+    </ul>
+    <h2>Also new in 5.0</h2>
     <ul>
       <li><b>You, on the drawing.</b> Press <b>&#128225; GPS</b> and a <b>blue dot</b> marks your own position on the plan, with a circle showing how accurate the satellite fix is. Walk, and the dot moves &mdash; exactly like Google Maps, but on your CAD drawing.</li>
       <li><b>Anywhere in the world.</b> The UTM zone and the hemisphere are worked out from <b>your own position</b>, so it is correct in India, Australia or Peru without changing a setting.</li>
@@ -200,7 +208,7 @@
   </section>
 
   <footer>
-    DK CAD Mobile &middot; Version 5.0 &middot; Released 31 August 2026<br>
+    DK CAD Mobile &middot; Version 5.1 &middot; Released 31 August 2026<br>
     Desktop version: <a href="index.html">DK CAD 3D for Windows</a>
   </footer>
 
