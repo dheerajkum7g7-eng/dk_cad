@@ -1,18 +1,18 @@
 ﻿{
   "_comment": "DK CAD Mobile release manifest. Lives in the dk_cad Pages repo ROOT as mobile-update.json; the app reads it from https://dheerajkum7g7-eng.github.io/dk_cad/mobile-update.json with the raw.githubusercontent copy as a mirror. The APK is stored as 2 MB PARTS because the publishing network's proxy rejects large authenticated uploads; GitHub does not join them, mobile.html does. To ship a new build: run publish-mobile.ps1, which rewrites version/size/sha256/partCount here. Keep this file SEPARATE from the desktop's update.json.",
 
-  "version": "4.9",
+  "version": "5.0",
   "url": "https://github.com/dheerajkum7g7-eng/dk_cad/releases/download/MV/DKCadMobile.apk",
   "_urlNote": "The SAME release asset the Google Sites download button points at, so there is one download in the world, not two. Release MV / DKCadMobile.apk is replaced in place on every version - the website link never changes. mobile.html on Pages is a BACKUP route for networks where github.com is blocked (this office's own laptops get 403 there).",
   "altUrl": "https://dheerajkum7g7-eng.github.io/dk_cad/mobile.html",
-  "notes": "A new UTM tool: tap anywhere on the drawing and each point is numbered on screen and listed underneath with its Easting/Northing AND its latitude and longitude. Copy All puts the whole list on the clipboard - it pastes into Excel as columns, reads fine in WhatsApp, and the lat/long lines paste straight into Google Earth. Snapping now reaches INSIDE blocks: endpoints, midpoints, intersections and nodes of the lines within a block symbol can be picked at last, and a new INS button snaps to the insertion point of text and MText. The coordinate and distance labels are fixed-size again - they no longer grow with the zoom until one reading covers the drawing - and they stay beside the point you tapped instead of being pushed into a corner. The toolbar is rebuilt in three slim rows: global actions on top, all the drawing tools in their own scrolling row (one button each, no menu), then the snap toggles - which leaves noticeably more of the screen for the drawing.",
+  "notes": "See where you are ON the drawing. Press the new GPS button and a blue dot marks your own position on the plan, with a circle showing how accurate the fix is - and it moves as you walk, like Google Maps. It works on any georeferenced drawing anywhere in the world: the UTM zone and hemisphere are worked out from your own position, nothing is fixed to one country. On a local site grid it says so rather than placing you somewhere wrong. The UTM panel also gains a Here button, which drops your current position into the coordinate list and copies its Easting/Northing and latitude/longitude straight to the clipboard. The coordinate and distance labels are CAD text again: the box in the bottom bar is now a HEIGHT IN DRAWING UNITS, so type 1 on a metre survey and the label is one metre tall - it grows and shrinks with the drawing as you zoom instead of sitting over it. Everything from 4.9 - the UTM point picker, snapping inside blocks, the INS snap and the slim three-row toolbar - is unchanged.",
   "mandatory": false,
 
-  "apkName": "DKCad_v4.9.apk",
-  "partBase": "https://dheerajkum7g7-eng.github.io/dk_cad/mobile/4.9/DKCad_v4.9.apk",
+  "apkName": "DKCad_v5.0.apk",
+  "partBase": "https://dheerajkum7g7-eng.github.io/dk_cad/mobile/5.0/DKCad_v5.0.apk",
   "partCount": 20,
-  "size": 40249593,
-  "sha256": "EFC5CAD8DA827CB8A3D89A42772A2B5578111189A7AD48C2C3AF840D719A7D45",
+  "size": 40265977,
+  "sha256": "127C824D07D807D2AB3746FA4BAD99FE67D4F940D0BC29F138E2DCAE15AC90BC",
   "released": "2026-08-31"
 }
 
