@@ -1,18 +1,19 @@
 ﻿{
   "_comment": "DK CAD Mobile release manifest. Lives in the dk_cad Pages repo ROOT as mobile-update.json; the app reads it from https://dheerajkum7g7-eng.github.io/dk_cad/mobile-update.json with the raw.githubusercontent copy as a mirror. The APK is stored as 2 MB PARTS because the publishing network's proxy rejects large authenticated uploads; GitHub does not join them, mobile.html does. To ship a new build: run publish-mobile.ps1, which rewrites version/size/sha256/partCount here. Keep this file SEPARATE from the desktop's update.json.",
 
-  "version": "5.0",
+  "version": "5.1",
   "url": "https://github.com/dheerajkum7g7-eng/dk_cad/releases/download/MV/DKCadMobile.apk",
   "_urlNote": "The SAME release asset the Google Sites download button points at, so there is one download in the world, not two. Release MV / DKCadMobile.apk is replaced in place on every version - the website link never changes. mobile.html on Pages is a BACKUP route for networks where github.com is blocked (this office's own laptops get 403 there).",
   "altUrl": "https://dheerajkum7g7-eng.github.io/dk_cad/mobile.html",
-  "notes": "See where you are ON the drawing. Press the new GPS button and a blue dot marks your own position on the plan, with a circle showing how accurate the fix is - and it moves as you walk, like Google Maps. It works on any georeferenced drawing anywhere in the world: the UTM zone and hemisphere are worked out from your own position, nothing is fixed to one country. On a local site grid it says so rather than placing you somewhere wrong. The UTM panel also gains a Here button, which drops your current position into the coordinate list and copies its Easting/Northing and latitude/longitude straight to the clipboard. The coordinate and distance labels are CAD text again: the box in the bottom bar is now a HEIGHT IN DRAWING UNITS, so type 1 on a metre survey and the label is one metre tall - it grows and shrinks with the drawing as you zoom instead of sitting over it. Everything from 4.9 - the UTM point picker, snapping inside blocks, the INS snap and the slim three-row toolbar - is unchanged.",
+  "notes": "Label height is now an absolute value in drawing units. The box in the bottom bar opens at exactly 1.0 in every drawing and accepts any value from 0.0001 to 100 - it is no longer derived from the drawing's extents, so it will not open at 730 in one file and 0.0075 in another, and there is no per-drawing minimum to get stuck against. The coordinate leader no longer flips sides while zooming: the direction is fixed at the moment the point is picked. The UTM picker now snaps - endpoints, midpoints, intersections, nodes and geometry inside blocks - and its panel shows the drawing's own X,Y, the UTM easting/northing with the zone and MGRS band letter (for example 43Q) worked out from the point itself, and the WGS84 latitude and longitude. Detection of georeferenced drawings is far more reliable: it is now decided by a vote of the geometry rather than by the centre of the bounding box, so a single stray object at the origin no longer causes a valid survey to be reported as a local drawing. A genuinely local drawing is labelled Local Coordinate and is given no UTM zone at all. PREVIOUS RELEASE (5.0): live GPS position on the drawing, the Here button, and CAD text heights.",
+  "_notes50": "See where you are ON the drawing. Press the new GPS button and a blue dot marks your own position on the plan, with a circle showing how accurate the fix is - and it moves as you walk, like Google Maps. It works on any georeferenced drawing anywhere in the world: the UTM zone and hemisphere are worked out from your own position, nothing is fixed to one country. On a local site grid it says so rather than placing you somewhere wrong. The UTM panel also gains a Here button, which drops your current position into the coordinate list and copies its Easting/Northing and latitude/longitude straight to the clipboard. The coordinate and distance labels are CAD text again: the box in the bottom bar is now a HEIGHT IN DRAWING UNITS, so type 1 on a metre survey and the label is one metre tall - it grows and shrinks with the drawing as you zoom instead of sitting over it. Everything from 4.9 - the UTM point picker, snapping inside blocks, the INS snap and the slim three-row toolbar - is unchanged.",
   "mandatory": false,
 
-  "apkName": "DKCad_v5.0.apk",
-  "partBase": "https://dheerajkum7g7-eng.github.io/dk_cad/mobile/5.0/DKCad_v5.0.apk",
+  "apkName": "DKCad_v5.1.apk",
+  "partBase": "https://dheerajkum7g7-eng.github.io/dk_cad/mobile/5.1/DKCad_v5.1.apk",
   "partCount": 20,
   "size": 40265977,
-  "sha256": "127C824D07D807D2AB3746FA4BAD99FE67D4F940D0BC29F138E2DCAE15AC90BC",
+  "sha256": "55BD03B014EC8D116D6EF8208E37EB4DDC36610C38DEB7454E3551EED1DAA762",
   "released": "2026-08-31"
 }
 
