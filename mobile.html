@@ -94,7 +94,7 @@
   <header>
     <p class="logo">DK CAD</p>
     <p class="tag">Open DWG and DXF drawings on your phone.</p>
-    <span class="badge">Version 6.0 &middot; Android</span>
+    <span class="badge">Version 6.1 &middot; Android</span>
   </header>
 
   <div class="cta">
@@ -104,7 +104,15 @@
   </div>
 
   <section>
-    <h2>What&rsquo;s new in 6.0</h2>
+    <h2>What&rsquo;s new in 6.1 &mdash; a repair of 6.0</h2>
+    <ul>
+      <li><b>Speed is back.</b> 6.0 opened drawings through the <b>slow reader</b> by mistake &mdash; a simple drawing took twenty seconds, a heavy one sat for minutes. The fast native DWG reader writes its result in a versioned format, and 6.0 raised that version <b>without rebuilding the reader</b>, so every conversion was discarded as unreadable and the app fell back to the slow path it only keeps for phones that cannot run the fast one. The format matches again, the reader has been rebuilt from current code, and a check now fails the build if the two ever disagree.</li>
+      <li><b>Hatch really does stop at curved boundaries now.</b> The bleeding was inside that same native reader: it took a curved boundary edge as the <b>straight line across it</b>, and ignored elliptical and spline edges completely. It now follows the curve to three parts in a thousand of the radius &mdash; and carries each hatch&rsquo;s own pattern definition, so spacing, angle and dash lengths are the drawing&rsquo;s own numbers.</li>
+      <li><b>Your saved drawings are re-read once.</b> Anything already opened on the phone kept whatever the <i>old</i> reader made of it, so this release clears those saved results one time. The next open of each drawing re-reads it at native speed &mdash; seconds &mdash; and is instant from then on.</li>
+      <li><b>Layout tabs are switched off.</b> The Model/Layout sheet tabs from 6.0 were showing the wrong content, so they are disabled until that is worked through properly. <b>Layers</b> and everything from 5.9 and earlier are unchanged.</li>
+      <li class="note">Still open, said plainly: <b>hatches disappearing as you zoom in</b> has not been reproduced here yet &mdash; not by the pattern anchor, not by the culling, and not by cost (fourteen deep-zoom redraws of a large hatch take 53&nbsp;ms). If it still happens on this build, the drawing itself is what is needed to find it.</li>
+    </ul>
+    <h2>Also new in 6.0</h2>
     <ul>
       <li><b>&#9776; Layers.</b> A new <b>Layers</b> button slides a panel up from the bottom listing <b>every layer in the drawing</b> &mdash; its own colour, how many objects sit on it, and an eye that switches it off. Tap a row to hide a layer, <b>Iso</b> to show only that one, or <b>All on / All off</b>; a filter box handles the survey drawings that carry a hundred and fifty layers. What you have hidden is shown <b>on the button itself</b>, so half a missing drawing can never be a mystery &mdash; and a tap can no longer pick or erase something on a switched-off layer, because you cannot select what the drawing is not showing.</li>
       <li><b>Model and Layout tabs (paper space).</b> A drawing&rsquo;s sheets now appear as <b>tabs</b> above the bottom bar &mdash; Model first, then every layout the file carries. Tapping one opens that sheet: its title block, its notes, <b>and the drawing seen through each of its viewports</b>, at the sheet&rsquo;s own scale and clipped to the window. A sheet with nothing on it says so before you open it, and Model space is untouched by the trip &mdash; switching back gives you the same drawing you left, with your work on it.</li>
@@ -237,7 +245,7 @@
   </section>
 
   <footer>
-    DK CAD Mobile &middot; Version 6.0 &middot; Released 10 September 2026<br>
+    DK CAD Mobile &middot; Version 6.1 &middot; Released 10 September 2026<br>
     Desktop version: <a href="index.html">DK CAD 3D for Windows</a>
   </footer>
 
