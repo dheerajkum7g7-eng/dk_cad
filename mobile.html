@@ -94,7 +94,7 @@
   <header>
     <p class="logo">DK CAD</p>
     <p class="tag">Open DWG and DXF drawings on your phone.</p>
-    <span class="badge">Version 5.8 &middot; Android</span>
+    <span class="badge">Version 5.9 &middot; Android</span>
   </header>
 
   <div class="cta">
@@ -104,7 +104,15 @@
   </div>
 
   <section>
-    <h2>What&rsquo;s new in 5.8</h2>
+    <h2>What&rsquo;s new in 5.9</h2>
+    <ul>
+      <li><b>&ldquo;GPS &plusmn;100 m&rdquo; was never GPS.</b> A fix that never got better than about a hundred metres was a <b>cell-tower and Wi-Fi position</b> &mdash; which the app receives while the satellite chip is still searching, and then displayed with the word <b>GPS</b> in front of it. The number was real; the word was wrong, and nothing on screen let you tell. Every position is now labelled by what actually produced it: <b>GPS &plusmn;4 m</b>, <b>NETWORK &plusmn;100 m &mdash; not a GPS fix</b>, or an external receiver &mdash; and the app tells you the one thing that fixes it: step into the open.</li>
+      <li><b>A tower position can no longer become a coordinate.</b> It is refused for measuring with, <b>whatever accuracy it claims for itself</b>, because a hundred beautifully consistent tower guesses are still a hundred metres out.</li>
+      <li><b>Precise vs Approximate location.</b> Android lets a permission be granted as <b>Approximate</b>, and in that state the phone deliberately rounds your position to roughly a hundred metres &mdash; no app can override it. DK CAD now checks which of the two it actually holds, says so plainly, and opens the exact settings page that holds the switch.</li>
+      <li><b>&#128205; Here now averages.</b> Instead of one instant reading, hold the phone still and it takes <b>every fix for thirty seconds</b>, throws out any wild one, weights the good ones by their own accuracy, and records the average with the honest &plusmn; it achieved stored next to the point. Tap <b>&#9209; Stop</b> to take it sooner. In the open this typically turns a five-metre reading into one or two.</li>
+      <li class="note">Said honestly: averaging removes the random half of GPS error, not the rest, so DK CAD will never print a precision the phone cannot support. Genuine sub-metre needs an external RTK receiver &mdash; and if one is feeding your phone, DK CAD now recognises it and reports its centimetres instead of ignoring it.</li>
+    </ul>
+    <h2>Also new in 5.8</h2>
     <ul>
       <li><b>The update notice is instant.</b> It used to start only after the whole app had finished loading, and then asked each server one after the other &mdash; so the notice could arrive ten or fifteen seconds in, by which time you had already opened a drawing in the old build and stopped looking. It now starts on the <b>first instruction of a launch</b>, while the screen is still being built, and asks every server <b>at the same time</b>. It still appears only on a fresh start, never when you come back to the app from something else.</li>
       <li><b>GPS that is switched off now says so.</b> Giving DK CAD permission and having the phone&rsquo;s location actually turned on are <b>two different switches</b>, and only the first was ever checked. With permission granted but the phone&rsquo;s GPS off, every position path failed quietly and Locate simply sat on &ldquo;waiting for a GPS fix&rdquo; forever, with nothing on screen to say why. It now notices, tells you exactly what is wrong, and takes you <b>straight to the setting</b> to turn it on.</li>
@@ -222,7 +230,7 @@
   </section>
 
   <footer>
-    DK CAD Mobile &middot; Version 5.8 &middot; Released 9 September 2026<br>
+    DK CAD Mobile &middot; Version 5.9 &middot; Released 9 September 2026<br>
     Desktop version: <a href="index.html">DK CAD 3D for Windows</a>
   </footer>
 
