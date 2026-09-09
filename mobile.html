@@ -94,7 +94,7 @@
   <header>
     <p class="logo">DK CAD</p>
     <p class="tag">Open DWG and DXF drawings on your phone.</p>
-    <span class="badge">Version 5.1 &middot; Android</span>
+    <span class="badge">Version 5.8 &middot; Android</span>
   </header>
 
   <div class="cta">
@@ -104,7 +104,21 @@
   </div>
 
   <section>
-    <h2>What&rsquo;s new in 5.1</h2>
+    <h2>What&rsquo;s new in 5.8</h2>
+    <ul>
+      <li><b>The update notice is instant.</b> It used to start only after the whole app had finished loading, and then asked each server one after the other &mdash; so the notice could arrive ten or fifteen seconds in, by which time you had already opened a drawing in the old build and stopped looking. It now starts on the <b>first instruction of a launch</b>, while the screen is still being built, and asks every server <b>at the same time</b>. It still appears only on a fresh start, never when you come back to the app from something else.</li>
+      <li><b>GPS that is switched off now says so.</b> Giving DK CAD permission and having the phone&rsquo;s location actually turned on are <b>two different switches</b>, and only the first was ever checked. With permission granted but the phone&rsquo;s GPS off, every position path failed quietly and Locate simply sat on &ldquo;waiting for a GPS fix&rdquo; forever, with nothing on screen to say why. It now notices, tells you exactly what is wrong, and takes you <b>straight to the setting</b> to turn it on.</li>
+      <li><b>Locate no longer starts from an old position.</b> The first position shown was whatever the phone had last recorded, with <b>no check of how old it was</b> &mdash; this morning, or another town. So Locate pointed somewhere wrong for ten to fifteen seconds and then jumped. A remembered position is now used only while it is still <b>seconds old and accurate</b>; otherwise DK CAD goes and gets a real fix at full accuracy. When there is genuinely nothing recent it says <b>waiting for a GPS fix</b>, which is true, instead of showing a confident wrong number.</li>
+    </ul>
+    <h2>Also new in 5.4</h2>
+    <ul>
+      <li><b>Local to UTM.</b> A drawing on a local site grid (starting at 0,0 or 1000,1000) states nothing about where it is on Earth. Now you can tell DK CAD where it is &mdash; and it can often work it out <b>by itself</b>, by reading the drawing&rsquo;s own written coordinate labels. Each coordinate is taken from the survey marker or the leader <b>arrowhead</b> the label points at, never from the text box, which on a survey sheet routinely sits tens of metres away from the point it describes. Every label is cross-checked against the others and any that disagree are thrown out, so one typo cannot tilt the answer.</li>
+      <li><b>Or set it by hand.</b> If the drawing carries no written coordinates, pick two points and type what they really are. A third is offered, because it is the first point that can <b>check</b> the other two. Nothing is applied until you have seen the rotation, the scale and the error it fits with, and the alignment is remembered for that drawing.</li>
+      <li><b>Background map.</b> A new <b>Map</b> button puts satellite imagery, a road map or a topographic map <b>behind</b> your drawing, lined up with the real world &mdash; so your lines sit on the ground they were surveyed from. One tap cycles Satellite, Road, Topo and off. It stays off until you switch it on, and it never switches itself on again, not even for the next drawing.</li>
+      <li><b>It asks which zone, and shows you.</b> The map asks which UTM zone the drawing is in instead of assuming the zone you happen to be standing in, and it shows you where that zone puts the drawing, so a wrong one is obvious before you accept it. Zooming in deeply no longer leaves blank tiles: where the imagery runs out, the closest level that does exist is stretched instead, so the map is never white. Tiles are cached on the phone, so panning back over ground you have already seen costs no data.</li>
+      <li class="note">Imagery credit: Esri, Maxar, Earthstar Geographics. Road map by OpenStreetMap contributors.</li>
+    </ul>
+    <h2>Also new in 5.1</h2>
     <ul>
       <li><b>Label height is an absolute value again.</b> The box in the bottom bar opens at exactly <b>1.0</b> in every drawing and accepts anything from <b>0.0001 to 100</b>. It is no longer calculated from the drawing&rsquo;s extents, so it will not open at 730 in one file and 0.0075 in another, and there is no per-drawing minimum to get stuck against.</li>
       <li><b>The coordinate leader stays put.</b> Its direction is fixed at the moment the point is picked, so the arrow and its text no longer flip from one side to the other as you zoom.</li>
@@ -208,7 +222,7 @@
   </section>
 
   <footer>
-    DK CAD Mobile &middot; Version 5.1 &middot; Released 31 August 2026<br>
+    DK CAD Mobile &middot; Version 5.8 &middot; Released 9 September 2026<br>
     Desktop version: <a href="index.html">DK CAD 3D for Windows</a>
   </footer>
 
