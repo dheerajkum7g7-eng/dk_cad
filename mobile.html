@@ -94,7 +94,7 @@
   <header>
     <p class="logo">DK CAD</p>
     <p class="tag">Open DWG and DXF drawings on your phone.</p>
-    <span class="badge">Version 5.9 &middot; Android</span>
+    <span class="badge">Version 6.0 &middot; Android</span>
   </header>
 
   <div class="cta">
@@ -104,7 +104,14 @@
   </div>
 
   <section>
-    <h2>What&rsquo;s new in 5.9</h2>
+    <h2>What&rsquo;s new in 6.0</h2>
+    <ul>
+      <li><b>&#9776; Layers.</b> A new <b>Layers</b> button slides a panel up from the bottom listing <b>every layer in the drawing</b> &mdash; its own colour, how many objects sit on it, and an eye that switches it off. Tap a row to hide a layer, <b>Iso</b> to show only that one, or <b>All on / All off</b>; a filter box handles the survey drawings that carry a hundred and fifty layers. What you have hidden is shown <b>on the button itself</b>, so half a missing drawing can never be a mystery &mdash; and a tap can no longer pick or erase something on a switched-off layer, because you cannot select what the drawing is not showing.</li>
+      <li><b>Model and Layout tabs (paper space).</b> A drawing&rsquo;s sheets now appear as <b>tabs</b> above the bottom bar &mdash; Model first, then every layout the file carries. Tapping one opens that sheet: its title block, its notes, <b>and the drawing seen through each of its viewports</b>, at the sheet&rsquo;s own scale and clipped to the window. A sheet with nothing on it says so before you open it, and Model space is untouched by the trip &mdash; switching back gives you the same drawing you left, with your work on it.</li>
+      <li><b>Hatches: three real bugs, fixed.</b> Shading used to <b>bleed past curved boundaries</b>, because a curved edge was being taken as the straight line across it &mdash; the bulged edges of a polyline, and ellipse and spline edges, were not being read at all. (In one of your own drawings, <b>185 of its 200 hatches</b> have a curved edge.) They are now followed as curves.</li>
+      <li><b>&hellip;and the pattern is the file&rsquo;s own.</b> The size was wrong for the same kind of reason: each pattern was looked up <b>by name</b> in a small built-in table instead of reading the definition the drawing itself carries, so the spacing, the angle and the dash and gap lengths were an approximation of a <i>different</i> pattern. The drawing&rsquo;s own definition is now used, at the CAD spacing it states &mdash; and a hatch too small to show its pattern no longer draws every row outside itself and appears as an empty outline.</li>
+    </ul>
+    <h2>Also new in 5.9</h2>
     <ul>
       <li><b>&ldquo;GPS &plusmn;100 m&rdquo; was never GPS.</b> A fix that never got better than about a hundred metres was a <b>cell-tower and Wi-Fi position</b> &mdash; which the app receives while the satellite chip is still searching, and then displayed with the word <b>GPS</b> in front of it. The number was real; the word was wrong, and nothing on screen let you tell. Every position is now labelled by what actually produced it: <b>GPS &plusmn;4 m</b>, <b>NETWORK &plusmn;100 m &mdash; not a GPS fix</b>, or an external receiver &mdash; and the app tells you the one thing that fixes it: step into the open.</li>
       <li><b>A tower position can no longer become a coordinate.</b> It is refused for measuring with, <b>whatever accuracy it claims for itself</b>, because a hundred beautifully consistent tower guesses are still a hundred metres out.</li>
@@ -230,7 +237,7 @@
   </section>
 
   <footer>
-    DK CAD Mobile &middot; Version 5.9 &middot; Released 9 September 2026<br>
+    DK CAD Mobile &middot; Version 6.0 &middot; Released 10 September 2026<br>
     Desktop version: <a href="index.html">DK CAD 3D for Windows</a>
   </footer>
 
