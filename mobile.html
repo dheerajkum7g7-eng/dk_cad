@@ -94,7 +94,7 @@
   <header>
     <p class="logo">DK CAD</p>
     <p class="tag">Open DWG and DXF drawings on your phone.</p>
-    <span class="badge">Version 6.3 &middot; Android</span>
+    <span class="badge">Version 6.4 &middot; Android</span>
   </header>
 
   <div class="cta">
@@ -104,7 +104,13 @@
   </div>
 
   <section>
-    <h2>What&rsquo;s new in 6.3</h2>
+    <h2>What&rsquo;s new in 6.4 &mdash; one tap</h2>
+    <ul>
+      <li><b>The app icon is your drawing.</b> DK CAD now reopens whatever you had open last, straight from its saved copy &mdash; seconds &mdash; instead of landing on the file list and making you pick it again every time. A switch on the home page turns it off if you prefer starting on the list, and anything you tap outside the app always wins over it.</li>
+      <li><b>Tapping a drawing in a file manager works.</b> File managers hand a drawing over with whatever type their own table happens to hold, and for a DWG that is often nothing useful &mdash; so DK CAD did not appear in the list at all. It now accepts the handover whatever type is claimed and <b>checks the first bytes itself</b>, refusing politely if it is not a drawing.</li>
+      <li><b>Sharing into DK CAD works too.</b> A share from WhatsApp, Gmail or Drive is a different kind of request from a tap, and the app was never listening for it &mdash; so it was missing from the share sheet. It is there now.</li>
+    </ul>
+    <h2>Also new in 6.3</h2>
     <ul>
       <li><b>Hatch scale &mdash; the real cause, and it was not the renderer.</b> On a phone a DWG is always read through a <b>saved copy</b>: the fast native reader parses the drawing, writes that copy, and the app loads it. The hatch&rsquo;s <b>own pattern definition</b> &mdash; the line families the drawing carries, which state the spacing, the angle and the dash lengths &mdash; was never written into that copy. Every hatch therefore arrived on the device with no definition and fell back to a small built-in table looked up by pattern <b>name</b>, whose base unit is imperial: wrong spacing, wrong angle, and <b>nothing drawn at all</b> for a pattern the table has never heard of. On a computer the same drawing measured perfectly, because there the reader&rsquo;s own result is used directly &mdash; which is exactly why this took so long to find.</li>
       <li><b>It is carried now, blocks included</b> &mdash; and a check fails the build if it is ever dropped again. Measured end to end on a real drawing: <b>33 of 33</b> pattern hatches arrive with the drawing&rsquo;s own families, at the row spacing the file states.</li>
@@ -259,7 +265,7 @@
   </section>
 
   <footer>
-    DK CAD Mobile &middot; Version 6.3 &middot; Released 10 September 2026<br>
+    DK CAD Mobile &middot; Version 6.4 &middot; Released 10 September 2026<br>
     Desktop version: <a href="index.html">DK CAD 3D for Windows</a>
   </footer>
 
