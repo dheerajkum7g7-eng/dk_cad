@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -94,7 +94,7 @@
   <header>
     <p class="logo">DK CAD</p>
     <p class="tag">Open DWG and DXF drawings on your phone.</p>
-    <span class="badge">Version 6.1 &middot; Android</span>
+    <span class="badge">Version 6.2 &middot; Android</span>
   </header>
 
   <div class="cta">
@@ -104,7 +104,14 @@
   </div>
 
   <section>
-    <h2>What&rsquo;s new in 6.1 &mdash; a repair of 6.0</h2>
+    <h2>What&rsquo;s new in 6.2</h2>
+    <ul>
+      <li><b>Hatch stops at its boundary &mdash; curves included.</b> The remaining leak was not the curves at all: it was the <b>order the boundary edges are stored in</b>. A drawing may store an outline&rsquo;s edges in any order and in either direction, and the app was stringing them together as they came &mdash; which turns a simple outline into a figure that <b>crosses itself</b>, and a self-crossing outline fills as a wedge right across the drawing. The edges are now <b>walked by their endpoints</b>: each step takes the edge that really continues the outline, turned round when it is joined by its far end. Measured on a square whose edges are stored out of order: read as stored it encloses <b>half</b> the area it should; walked, it is exact.</li>
+      <li><b>Curves keep 6.1&rsquo;s accuracy.</b> A bulged polyline edge, an elliptical edge and a spline edge are each followed as a curve, to <b>three parts in a thousand</b> of the radius &mdash; and every hatch uses the <b>pattern definition the drawing itself carries</b>, so spacing, angle and dash lengths are the file&rsquo;s own numbers.</li>
+      <li><b>Opening speed is untouched.</b> This is boundary work, not reading work: on a 200-hatch drawing the entire hatch boundary set is under <b>7,000 points</b> and the conversion step is <b>0.8&nbsp;s of a 5.2&nbsp;s open</b> &mdash; the rest is the DWG reader, which is unchanged, and the cache format still matches what the fast native reader writes.</li>
+      <li class="note">Still open: hatches <i>vanishing</i> as you zoom in is not reproduced here &mdash; a large hatch on survey coordinates stays drawn a million times in, and fourteen deep-zoom redraws cost 53&nbsp;ms. That one needs the drawing it happens on.</li>
+    </ul>
+    <h2>Also new in 6.1 &mdash; the speed repair</h2>
     <ul>
       <li><b>Speed is back.</b> 6.0 opened drawings through the <b>slow reader</b> by mistake &mdash; a simple drawing took twenty seconds, a heavy one sat for minutes. The fast native DWG reader writes its result in a versioned format, and 6.0 raised that version <b>without rebuilding the reader</b>, so every conversion was discarded as unreadable and the app fell back to the slow path it only keeps for phones that cannot run the fast one. The format matches again, the reader has been rebuilt from current code, and a check now fails the build if the two ever disagree.</li>
       <li><b>Hatch really does stop at curved boundaries now.</b> The bleeding was inside that same native reader: it took a curved boundary edge as the <b>straight line across it</b>, and ignored elliptical and spline edges completely. It now follows the curve to three parts in a thousand of the radius &mdash; and carries each hatch&rsquo;s own pattern definition, so spacing, angle and dash lengths are the drawing&rsquo;s own numbers.</li>
@@ -245,7 +252,7 @@
   </section>
 
   <footer>
-    DK CAD Mobile &middot; Version 6.1 &middot; Released 10 September 2026<br>
+    DK CAD Mobile &middot; Version 6.2 &middot; Released 10 September 2026<br>
     Desktop version: <a href="index.html">DK CAD 3D for Windows</a>
   </footer>
 
