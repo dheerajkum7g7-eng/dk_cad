@@ -94,7 +94,7 @@
   <header>
     <p class="logo">DK CAD</p>
     <p class="tag">Open DWG and DXF drawings on your phone.</p>
-    <span class="badge">Version 6.2 &middot; Android</span>
+    <span class="badge">Version 6.3 &middot; Android</span>
   </header>
 
   <div class="cta">
@@ -104,7 +104,14 @@
   </div>
 
   <section>
-    <h2>What&rsquo;s new in 6.2</h2>
+    <h2>What&rsquo;s new in 6.3</h2>
+    <ul>
+      <li><b>Hatch scale &mdash; the real cause, and it was not the renderer.</b> On a phone a DWG is always read through a <b>saved copy</b>: the fast native reader parses the drawing, writes that copy, and the app loads it. The hatch&rsquo;s <b>own pattern definition</b> &mdash; the line families the drawing carries, which state the spacing, the angle and the dash lengths &mdash; was never written into that copy. Every hatch therefore arrived on the device with no definition and fell back to a small built-in table looked up by pattern <b>name</b>, whose base unit is imperial: wrong spacing, wrong angle, and <b>nothing drawn at all</b> for a pattern the table has never heard of. On a computer the same drawing measured perfectly, because there the reader&rsquo;s own result is used directly &mdash; which is exactly why this took so long to find.</li>
+      <li><b>It is carried now, blocks included</b> &mdash; and a check fails the build if it is ever dropped again. Measured end to end on a real drawing: <b>33 of 33</b> pattern hatches arrive with the drawing&rsquo;s own families, at the row spacing the file states.</li>
+      <li><b>Your Recent list is safe again.</b> The previous build cleared saved copies once, and because a Recent entry points at its saved copy, the whole list emptied itself after the update. Fixed twice over: copies written by <b>older builds are now read</b> rather than refused, and a Recent entry is <b>never deleted</b> just because its copy is gone &mdash; it tells you to open the drawing once and it is quick again. Nothing is deleted automatically in this build.</li>
+      <li><b>Opening speed untouched.</b> The format the fast reader writes and the format the app reads were changed <b>together</b> in this build &mdash; the one rule that matters here, and the one 6.0 broke.</li>
+    </ul>
+    <h2>Also new in 6.2</h2>
     <ul>
       <li><b>Hatch stops at its boundary &mdash; curves included.</b> The remaining leak was not the curves at all: it was the <b>order the boundary edges are stored in</b>. A drawing may store an outline&rsquo;s edges in any order and in either direction, and the app was stringing them together as they came &mdash; which turns a simple outline into a figure that <b>crosses itself</b>, and a self-crossing outline fills as a wedge right across the drawing. The edges are now <b>walked by their endpoints</b>: each step takes the edge that really continues the outline, turned round when it is joined by its far end. Measured on a square whose edges are stored out of order: read as stored it encloses <b>half</b> the area it should; walked, it is exact.</li>
       <li><b>Curves keep 6.1&rsquo;s accuracy.</b> A bulged polyline edge, an elliptical edge and a spline edge are each followed as a curve, to <b>three parts in a thousand</b> of the radius &mdash; and every hatch uses the <b>pattern definition the drawing itself carries</b>, so spacing, angle and dash lengths are the file&rsquo;s own numbers.</li>
@@ -252,7 +259,7 @@
   </section>
 
   <footer>
-    DK CAD Mobile &middot; Version 6.2 &middot; Released 10 September 2026<br>
+    DK CAD Mobile &middot; Version 6.3 &middot; Released 10 September 2026<br>
     Desktop version: <a href="index.html">DK CAD 3D for Windows</a>
   </footer>
 
