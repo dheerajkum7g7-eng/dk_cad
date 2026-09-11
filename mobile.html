@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -94,7 +94,7 @@
   <header>
     <p class="logo">DK CAD</p>
     <p class="tag">Open DWG and DXF drawings on your phone.</p>
-    <span class="badge">Version 6.4 &middot; Android</span>
+    <span class="badge">Version 6.6 &middot; Android</span>
   </header>
 
   <div class="cta">
@@ -104,8 +104,20 @@
   </div>
 
   <section>
-    <h2>What&rsquo;s new in 6.4 &mdash; one tap</h2>
+    <h2>What&rsquo;s new in 6.6 &mdash; layout tabs, done AutoCAD&rsquo;s way</h2>
     <ul>
+      <li><b>The Model / Layout tabs are back</b>, rebuilt from the ground up after 6.0 showed the wrong content. Four real causes were found &mdash; measured on your own drawings and <b>against AutoCAD itself</b> plotting the same sheets: every layout carries a hidden viewport that <i>is</i> the paper-space view, and it was being taken for a window into the model, so the whole drawing was drawn over the sheet; a <b>rotated (twisted) viewport</b> was read in the wrong unit, the wrong sign and the wrong frame; a window that showed little was silently replaced by a fit of the whole model; and hatches, dimensions, points and block fills were never drawn through a window at all.</li>
+      <li><b>A viewport is now a live window.</b> The app clips to its boundary &mdash; rectangular or shaped &mdash; and draws the model through it at the sheet&rsquo;s scale and rotation, so hatches, dimensions, text, blocks and points appear exactly as they do in model space. Layers frozen in that viewport only are honoured. The white page and its printable border sit under everything.</li>
+      <li><b>Checked against AutoCAD:</b> a title block with a hatched excavation through its window, a survey sheet with rotated windows, a sheet with sixteen windows and one with five shaped windows &mdash; all match.</li>
+      <li><b>Road bands:</b> a polyline drawn with a width is now a band on the phone, not a hairline.</li>
+      <li><b>Opening speed untouched.</b> The fast native reader and the app were rebuilt <b>together</b>; your saved drawings are re-read once, at native speed, to pick the sheets up.</li>
+    </ul>
+    <h2>Also new in 6.5 &mdash; hatches on the phone, two more fixes</h2>
+    <ul>
+      <li><b>The invisible grey hatch.</b> A pattern with several parallel line families at different base points (GOST_GROUND, AR-PARQ1 and the like) collapsed into <b>one</b> family &mdash; a third of its lines &mdash; so a dark-coloured one could not be seen. The families are now drawn where the pattern puts them, and a dark colour on the dark sheet is lifted just enough to read.</li>
+      <li><b>Scale when zoomed out.</b> A pattern used to look coarser than the drawing around it, because the rows that could not be drawn were simply dropped. Their ink is now put back as a tint, so a hatch darkens as it shrinks &mdash; the way it does in AutoCAD.</li>
+    </ul>
+    <h2>Also new in 6.4 &mdash; one tap</h2>    <ul>
       <li><b>The app icon is your drawing.</b> DK CAD now reopens whatever you had open last, straight from its saved copy &mdash; seconds &mdash; instead of landing on the file list and making you pick it again every time. A switch on the home page turns it off if you prefer starting on the list, and anything you tap outside the app always wins over it.</li>
       <li><b>Tapping a drawing in a file manager works.</b> File managers hand a drawing over with whatever type their own table happens to hold, and for a DWG that is often nothing useful &mdash; so DK CAD did not appear in the list at all. It now accepts the handover whatever type is claimed and <b>checks the first bytes itself</b>, refusing politely if it is not a drawing.</li>
       <li><b>Sharing into DK CAD works too.</b> A share from WhatsApp, Gmail or Drive is a different kind of request from a tap, and the app was never listening for it &mdash; so it was missing from the share sheet. It is there now.</li>
@@ -265,7 +277,7 @@
   </section>
 
   <footer>
-    DK CAD Mobile &middot; Version 6.4 &middot; Released 10 September 2026<br>
+    DK CAD Mobile &middot; Version 6.6 &middot; Released 12 September 2026<br>
     Desktop version: <a href="index.html">DK CAD 3D for Windows</a>
   </footer>
 
