@@ -94,7 +94,7 @@
   <header>
     <p class="logo">DK CAD</p>
     <p class="tag">Open DWG and DXF drawings on your phone.</p>
-    <span class="badge">Version 6.8 &middot; Android</span>
+    <span class="badge">Version 6.9 &middot; Android</span>
   </header>
 
   <div class="cta">
@@ -104,8 +104,13 @@
   </div>
 
   <section>
-    <h2>What&rsquo;s new in 6.8 &mdash; an update shows its new picture at once</h2>
+    <h2>What&rsquo;s new in 6.9 &mdash; heavy drawings open again</h2>
     <ul>
+      <li><b>A drawing built from a very large block</b> (a bound site plan is one block of ten million line segments) stopped opening in 6.7 and closed the app. <b>Measured cause:</b> 6.7 gave every block segment its own colour, held <b>three times</b> as a list eight bytes per segment &mdash; some 260&nbsp;MB on top of the 350&nbsp;MB the segments take, more than the phone allows an app.</li>
+      <li><b>Colours are now kept as runs</b> (ten million segments are a few hundred runs); a block above two million segments never holds a per-segment list and is drawn run by run; the model box list is no longer duplicated for the sheet view. The picture is the same.</li>
+      <li class="note"><b>One honest note on the first open:</b> 6.6 and 6.7 changed what the saved copy carries, so a heavy drawing&rsquo;s first open after those updates re-reads the file in full &mdash; tens of seconds on a very large one &mdash; and writes a new copy; every open after that is seconds again. 6.8 keeps the drawing file beside its copy so that re-read happens by itself.</li>
+    </ul>
+    <h2>Also new in 6.8 &mdash; an update shows its new picture at once</h2>    <ul>
       <li><b>Why an update looked as if it had not installed.</b> After updating, the app reopened your last drawing from the <b>saved copy</b> the previous build had made &mdash; and that copy carried none of what the new build adds (layout tabs, block colours). Uninstalling happened to clear the copy, which is why that &ldquo;fixed&rdquo; it.</li>
       <li><b>The drawing file is now kept beside its saved copy.</b> When a later build changes the copy format, the drawing is re-read from that file at native speed &mdash; seconds &mdash; and the new picture appears. Nothing is deleted; the Recent list is untouched; the storage budget counts the kept files.</li>
       <li><b>A copy from an older build with no file beside it</b> (every drawing opened before this build) is no longer reopened silently at launch &mdash; the home screen tells you to open that drawing once with Open, after which it is kept with its file.</li>
@@ -288,7 +293,7 @@
   </section>
 
   <footer>
-    DK CAD Mobile &middot; Version 6.8 &middot; Released 12 September 2026<br>
+    DK CAD Mobile &middot; Version 6.9 &middot; Released 12 September 2026<br>
     Desktop version: <a href="index.html">DK CAD 3D for Windows</a>
   </footer>
 
