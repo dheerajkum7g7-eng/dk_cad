@@ -94,7 +94,7 @@
   <header>
     <p class="logo">DK CAD</p>
     <p class="tag">Open DWG and DXF drawings on your phone.</p>
-    <span class="badge">Version 6.7 &middot; Android</span>
+    <span class="badge">Version 6.8 &middot; Android</span>
   </header>
 
   <div class="cta">
@@ -104,8 +104,13 @@
   </div>
 
   <section>
-    <h2>What&rsquo;s new in 6.7 &mdash; layouts measured against AutoCAD</h2>
+    <h2>What&rsquo;s new in 6.8 &mdash; an update shows its new picture at once</h2>
     <ul>
+      <li><b>Why an update looked as if it had not installed.</b> After updating, the app reopened your last drawing from the <b>saved copy</b> the previous build had made &mdash; and that copy carried none of what the new build adds (layout tabs, block colours). Uninstalling happened to clear the copy, which is why that &ldquo;fixed&rdquo; it.</li>
+      <li><b>The drawing file is now kept beside its saved copy.</b> When a later build changes the copy format, the drawing is re-read from that file at native speed &mdash; seconds &mdash; and the new picture appears. Nothing is deleted; the Recent list is untouched; the storage budget counts the kept files.</li>
+      <li><b>A copy from an older build with no file beside it</b> (every drawing opened before this build) is no longer reopened silently at launch &mdash; the home screen tells you to open that drawing once with Open, after which it is kept with its file.</li>
+    </ul>
+    <h2>Also new in 6.7 &mdash; layouts measured against AutoCAD</h2>    <ul>
       <li><b>If the layout tabs did not appear for you:</b> the drawing was reopened from a <b>saved copy</b> made by an older build, and that copy carries no sheets. Open the drawing once more with the <b>Open</b> button &mdash; a fresh copy is made in seconds and the Model / Layout tabs appear; Recent works from then on. The status bar now says so.</li>
       <li><b>Thirty sheets plotted in AutoCAD and compared ink for ink.</b> That found five more things: a viewport keeps its <b>own layer</b> (a drawing with layer 0 off no longer loses every window); a viewport whose layer is off loses only its border, only a <b>frozen</b> layer hides it; objects <b>inside a block</b> are drawn in their own colours; multi-line text is placed by its attachment point, wrapped and centred as the drawing says; and the white page is placed from the plot window when the drawing&rsquo;s limits are stale.</li>
       <li><b>Measured:</b> the AutoCAD ink we also paint went from 69% to 92% on one sheet, 80% to 96% on another, 72% to 94% on three more.</li>
@@ -283,7 +288,7 @@
   </section>
 
   <footer>
-    DK CAD Mobile &middot; Version 6.7 &middot; Released 12 September 2026<br>
+    DK CAD Mobile &middot; Version 6.8 &middot; Released 12 September 2026<br>
     Desktop version: <a href="index.html">DK CAD 3D for Windows</a>
   </footer>
 
