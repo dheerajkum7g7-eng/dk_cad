@@ -94,7 +94,7 @@
   <header>
     <p class="logo">DK CAD</p>
     <p class="tag">Open DWG and DXF drawings on your phone.</p>
-    <span class="badge">Version 6.6 &middot; Android</span>
+    <span class="badge">Version 6.7 &middot; Android</span>
   </header>
 
   <div class="cta">
@@ -104,8 +104,14 @@
   </div>
 
   <section>
-    <h2>What&rsquo;s new in 6.6 &mdash; layout tabs, done AutoCAD&rsquo;s way</h2>
+    <h2>What&rsquo;s new in 6.7 &mdash; layouts measured against AutoCAD</h2>
     <ul>
+      <li><b>If the layout tabs did not appear for you:</b> the drawing was reopened from a <b>saved copy</b> made by an older build, and that copy carries no sheets. Open the drawing once more with the <b>Open</b> button &mdash; a fresh copy is made in seconds and the Model / Layout tabs appear; Recent works from then on. The status bar now says so.</li>
+      <li><b>Thirty sheets plotted in AutoCAD and compared ink for ink.</b> That found five more things: a viewport keeps its <b>own layer</b> (a drawing with layer 0 off no longer loses every window); a viewport whose layer is off loses only its border, only a <b>frozen</b> layer hides it; objects <b>inside a block</b> are drawn in their own colours; multi-line text is placed by its attachment point, wrapped and centred as the drawing says; and the white page is placed from the plot window when the drawing&rsquo;s limits are stale.</li>
+      <li><b>Measured:</b> the AutoCAD ink we also paint went from 69% to 92% on one sheet, 80% to 96% on another, 72% to 94% on three more.</li>
+      <li><b>Opening speed untouched</b> &mdash; reader and app rebuilt together.</li>
+    </ul>
+    <h2>Also new in 6.6 &mdash; layout tabs, done AutoCAD&rsquo;s way</h2>    <ul>
       <li><b>The Model / Layout tabs are back</b>, rebuilt from the ground up after 6.0 showed the wrong content. Four real causes were found &mdash; measured on your own drawings and <b>against AutoCAD itself</b> plotting the same sheets: every layout carries a hidden viewport that <i>is</i> the paper-space view, and it was being taken for a window into the model, so the whole drawing was drawn over the sheet; a <b>rotated (twisted) viewport</b> was read in the wrong unit, the wrong sign and the wrong frame; a window that showed little was silently replaced by a fit of the whole model; and hatches, dimensions, points and block fills were never drawn through a window at all.</li>
       <li><b>A viewport is now a live window.</b> The app clips to its boundary &mdash; rectangular or shaped &mdash; and draws the model through it at the sheet&rsquo;s scale and rotation, so hatches, dimensions, text, blocks and points appear exactly as they do in model space. Layers frozen in that viewport only are honoured. The white page and its printable border sit under everything.</li>
       <li><b>Checked against AutoCAD:</b> a title block with a hatched excavation through its window, a survey sheet with rotated windows, a sheet with sixteen windows and one with five shaped windows &mdash; all match.</li>
@@ -277,7 +283,7 @@
   </section>
 
   <footer>
-    DK CAD Mobile &middot; Version 6.6 &middot; Released 12 September 2026<br>
+    DK CAD Mobile &middot; Version 6.7 &middot; Released 12 September 2026<br>
     Desktop version: <a href="index.html">DK CAD 3D for Windows</a>
   </footer>
 
