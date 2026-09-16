@@ -94,17 +94,30 @@
   <header>
     <p class="logo">DK CAD</p>
     <p class="tag">Open DWG and DXF drawings on your phone.</p>
-    <span class="badge">Version 6.9 &middot; Android</span>
+    <span class="badge">Version 7.0 &middot; Android</span>
   </header>
 
   <div class="cta">
     <button class="btn" id="dl">Download for Android</button>
     <div id="bar"><div id="fill"></div></div>
     <p class="meta" id="meta">Loading release details&hellip;</p>
+    <!-- Shown only after the parts are joined: a REAL link the visitor taps.
+         The automatic save after the join runs long after the tap that started
+         it, and several Android browsers (in-app browsers most of all) ignore a
+         save that no fresh tap asked for - the bar reached 100% and nothing
+         happened. A visible link with the joined file behind it always works. -->
+    <p class="meta" id="save" style="display:none"></p>
   </div>
 
   <section>
-    <h2>What&rsquo;s new in 6.9 &mdash; heavy drawings open again</h2>
+    <h2>What&rsquo;s new in 7.0 &mdash; smooth snapping, tablets, and the download that stopped at 100%</h2>
+    <ul>
+      <li><b>The snap cursor no longer jumps.</b> Picking the <b>second</b> point of a Distance (or any polyline vertex after the first) made the cursor leap about and run away from the endpoint under your finger. Four measured causes, each fixed where it lives: with Perpendicular on, PERP always beat an endpoint once a base point existed (a segment is never further from you than its own end) &mdash; the finger&rsquo;s intent now decides, with a dead band; two lines drawn on top of each other (a boundary traced twice) produced a noise &ldquo;intersection&rdquo; that leapt along the overlap with every pixel &mdash; near-parallel pairs are no longer intersected; the intersection search was doing up to 80,000 crossing tests per hover on a dense sheet, so the cursor moved in lumps &mdash; it is capped and filtered to the aperture; and two candidates at nearly the same distance swapped winner on every pixel &mdash; the shown snap now has <b>hysteresis</b>: a different point must be clearly closer to take over. The point you <b>saw</b> is the point that is committed when you lift your finger, not a re-snap at wherever the finger rolled to.</li>
+      <li><b>Snap aperture is now a size in dp, not raw pixels</b> &mdash; on a tablet the old fixed 36&nbsp;px was twice the intended target. A finger gets a wider aperture than a mouse or pen.</li>
+      <li><b>Location works on Wi-Fi-only tablets.</b> A tablet with no GPS receiver had the app waiting for a GPS fix that could never arrive, and offering a &ldquo;Turn on GPS&rdquo; switch that does not exist. The app now uses the device&rsquo;s fused / network location (the same one Maps uses) when there is no GNSS chip, and on any device falls back to it automatically when the chip goes quiet indoors &mdash; while still <b>labelling</b> every fix honestly (a network fix is never called GPS, and never used for a survey coordinate).</li>
+      <li><b>This page: a download that stopped at 100%.</b> After the pieces were joined, the file was handed to the browser by a script; some Android browsers ignore that when it comes long after your tap. The joined file is now also offered as a <b>visible link</b> to tap, and the page tells you when to use the direct single-file download instead.</li>
+    </ul>
+    <h2>Also new in 6.9 &mdash; heavy drawings open again</h2>
     <ul>
       <li><b>A drawing built from a very large block</b> (a bound site plan is one block of ten million line segments) stopped opening in 6.7 and closed the app. <b>Measured cause:</b> 6.7 gave every block segment its own colour, held <b>three times</b> as a list eight bytes per segment &mdash; some 260&nbsp;MB on top of the 350&nbsp;MB the segments take, more than the phone allows an app.</li>
       <li><b>Colours are now kept as runs</b> (ten million segments are a few hundred runs); a block above two million segments never holds a per-segment list and is drawn run by run; the model box list is no longer duplicated for the sheet view. The picture is the same.</li>
@@ -293,7 +306,7 @@
   </section>
 
   <footer>
-    DK CAD Mobile &middot; Version 6.9 &middot; Released 12 September 2026<br>
+    DK CAD Mobile &middot; Version 7.0 &middot; Released 16 September 2026<br>
     Desktop version: <a href="index.html">DK CAD 3D for Windows</a>
   </footer>
 
@@ -318,10 +331,36 @@
   var meta = document.getElementById('meta');
   var bar  = document.getElementById('bar');
   var fill = document.getElementById('fill');
+  var save = document.getElementById('save');
   var rel  = null;
+  var lastUrl = null;
 
   function mb(n) { return (n / 1048576).toFixed(0); }
   function say(t, isErr) { meta.innerHTML = t; meta.className = isErr ? 'meta err' : 'meta'; }
+
+  /* "The download stopped at 100%" - what that actually was.
+     The bar reaches 100% when every PART has arrived; the visible file is then
+     handed to the browser by a script (a.click on a blob URL). That click runs
+     20-40 seconds after the visitor's tap, and several Android browsers refuse
+     a download that no fresh tap asked for - most of all the in-app browsers
+     of WhatsApp / Instagram / Facebook / Gmail and the Google Sites viewer,
+     which cannot save a blob at all. Nothing is reported; the page just sits
+     at 100%. So: (1) an in-app browser is told up front to open the page in
+     Chrome, (2) the joined file is ALWAYS offered as a visible link the visitor
+     taps themselves, (3) the direct single-file download is offered alongside. */
+  var ua = navigator.userAgent || '';
+  /* "; wv)" is Android's own WebView marker; the rest are apps that ship their
+     own browser but not a download manager */
+  var inApp = /; wv\)|\bwv\b|FBAN|FBAV|Instagram|Line\/|WhatsApp|GSA\/|Snapchat|Twitter/i.test(ua);
+  var canBlob = (function () {
+    try { return typeof Blob !== 'undefined' && typeof URL !== 'undefined' &&
+                 typeof URL.createObjectURL === 'function' && 'download' in document.createElement('a'); }
+    catch (e) { return false; }
+  })();
+
+  function directLink(j) {
+    return j && j.url ? '<a href="' + j.url + '">direct single-file download</a>' : '';
+  }
 
   /* cache-buster: GitHub Pages and every proxy in between will happily serve a
      stale manifest, which is how "I published it and nobody saw it" happens */
@@ -331,6 +370,12 @@
       rel = j;
       say(j.apkName + ' &middot; ' + mb(j.size) + '&nbsp;MB &middot; Android 5.0 and above');
       btn.disabled = false;
+      if (inApp || !canBlob) {
+        /* this browser cannot save a joined file - say so BEFORE 40 MB is fetched */
+        say('This looks like an in-app browser, which cannot save the download. ' +
+            'Open this page in <b>Chrome</b> (menu &rarr; Open in browser), or use the ' +
+            directLink(j) + '.', true);
+      }
     })
     .catch(function (e) {
       say('Could not read the release details (' + e.message + '). Please try again later.', true);
@@ -374,17 +419,34 @@
       }
       var blob = new Blob(chunks, { type: 'application/vnd.android.package-archive' });
       chunks.length = 0;                       /* let the phone reclaim the parts */
+      if (lastUrl) { try { URL.revokeObjectURL(lastUrl); } catch (e) {} }
       var url = URL.createObjectURL(blob);
-      var a = document.createElement('a');
-      a.href = url;
-      a.download = rel.apkName;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      setTimeout(function () { URL.revokeObjectURL(url); }, 120000);
+      lastUrl = url;
 
+      /* 1. the automatic save - works in Chrome, Firefox, Samsung Internet */
+      try {
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = rel.apkName;
+        a.rel = 'noopener';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      } catch (e) { /* fall through to the visible link */ }
+
+      /* 2. the VISIBLE link - the fix for "it stopped at 100%". A tap on a real
+            anchor is a fresh user gesture, which every browser honours. The
+            URL is NOT revoked on a timer any more: a visitor who comes back to
+            the tab five minutes later must still be able to tap it. */
       fill.style.width = '100%';
-      say('Ready &mdash; check your notifications or Downloads folder, then open ' +
+      save.style.display = 'block';
+      save.innerHTML =
+        '<a class="btn" href="' + url + '" download="' + rel.apkName + '" ' +
+        'style="display:inline-block;margin-top:8px">Save ' + rel.apkName + '</a>' +
+        '<br><span style="font-size:13px">If no download notification appeared, tap the button above. ' +
+        'If that does nothing either, this browser cannot save files &mdash; open this page in Chrome, or use the ' +
+        directLink(rel) + '.</span>';
+      say('Assembled ' + mb(got) + '&nbsp;MB &mdash; check your notifications or Downloads folder, then open ' +
           rel.apkName + ' to install.');
       btn.disabled = false;
       btn.textContent = 'Download again';
@@ -393,8 +455,10 @@
     function fail(e) {
       chunks.length = 0;
       bar.style.display = 'none';
+      save.style.display = 'none';
       say('Download failed: ' + e.message +
-          '.<br>Check your connection and press the button again &mdash; it restarts from the beginning.', true);
+          '.<br>Check your connection and press the button again &mdash; it restarts from the beginning. ' +
+          'Or use the ' + directLink(rel) + '.', true);
       btn.disabled = false;
     }
 
