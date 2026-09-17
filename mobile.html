@@ -94,7 +94,7 @@
   <header>
     <p class="logo">DK CAD</p>
     <p class="tag">Open DWG and DXF drawings on your phone.</p>
-    <span class="badge">Version 7.0 &middot; Android</span>
+    <span class="badge">Version 7.1 &middot; Android</span>
   </header>
 
   <div class="cta">
@@ -110,7 +110,17 @@
   </div>
 
   <section>
-    <h2>What&rsquo;s new in 7.0 &mdash; smooth snapping, tablets, and the download that stopped at 100%</h2>
+    <h2>What&rsquo;s new in 7.1 &mdash; layouts read exactly, every sheet compared against AutoCAD</h2>
+    <ul>
+      <li><b>Fifty-four sheets</b> in the drawing folder were plotted by AutoCAD and by this app and the ink compared. Half were wrong &mdash; and every cause was in the reader, not the drawing.</li>
+      <li><b>The extrusion (OCS) was never read.</b> Anything AutoCAD&rsquo;s MIRROR had touched &mdash; polylines, arcs, circles, hatches, text, whole blocks &mdash; was placed at the mirror image of its real position: a building&rsquo;s grey fill sat at X&nbsp;=&nbsp;&minus;6,500 while its outline stood at +6,500. Every planar entity now goes through its own plane, inside blocks too.</li>
+      <li><b>A huge bound xref was thinned blindly.</b> A ten-million-segment site plan was drawn one segment in eleven whatever the window looked at, so a sheet viewport on one street got scraps. The thinning is now counted over the segments <i>in the window</i>.</li>
+      <li><b>Dynamic blocks showed all their states</b> &mdash; a multi-size title block put three frames on one sheet. Hidden states are dropped as AutoCAD drops them.</li>
+      <li><b>Text:</b> underline / width codes leaked into titles (&ldquo;LPLAN ALONG&rdquo;, &ldquo;W1.L&amp;T&rdquo;), <code>%%d</code> printed instead of &deg;, a title&rsquo;s own <code>\H3.5x</code> height was ignored (quarter size), centred / right-justified TEXT anchored at its left end &mdash; all fixed.</li>
+      <li>A viewport on a frozen <i>Defpoints</i> layer is no longer hidden (AutoCAD plots it &mdash; measured); a hatch inside a rotated window is no longer clipped away; a <code>_SOLID</code> hatch fills; a zero-sweep arc no longer draws as a full circle.</li>
+      <li><b>Measured</b> (share of AutoCAD&rsquo;s ink we also paint): DIAL-AP2-X-14-008 0.15&rarr;0.91 &middot; PQC-RAB-16 0.17&rarr;0.91 &middot; GVIAL-085 0.29&rarr;0.74 &middot; SOIL sheets 0.5&rarr;0.85. Your saved drawings are re-read once, at native speed, to pick this up.</li>
+    </ul>
+    <h2>Also new in 7.0 &mdash; smooth snapping, tablets, and the download that stopped at 100%</h2>
     <ul>
       <li><b>The snap cursor no longer jumps.</b> Picking the <b>second</b> point of a Distance (or any polyline vertex after the first) made the cursor leap about and run away from the endpoint under your finger. Four measured causes, each fixed where it lives: with Perpendicular on, PERP always beat an endpoint once a base point existed (a segment is never further from you than its own end) &mdash; the finger&rsquo;s intent now decides, with a dead band; two lines drawn on top of each other (a boundary traced twice) produced a noise &ldquo;intersection&rdquo; that leapt along the overlap with every pixel &mdash; near-parallel pairs are no longer intersected; the intersection search was doing up to 80,000 crossing tests per hover on a dense sheet, so the cursor moved in lumps &mdash; it is capped and filtered to the aperture; and two candidates at nearly the same distance swapped winner on every pixel &mdash; the shown snap now has <b>hysteresis</b>: a different point must be clearly closer to take over. The point you <b>saw</b> is the point that is committed when you lift your finger, not a re-snap at wherever the finger rolled to.</li>
       <li><b>Snap aperture is now a size in dp, not raw pixels</b> &mdash; on a tablet the old fixed 36&nbsp;px was twice the intended target. A finger gets a wider aperture than a mouse or pen.</li>
@@ -306,7 +316,7 @@
   </section>
 
   <footer>
-    DK CAD Mobile &middot; Version 7.0 &middot; Released 16 September 2026<br>
+    DK CAD Mobile &middot; Version 7.1 &middot; Released 16 September 2026<br>
     Desktop version: <a href="index.html">DK CAD 3D for Windows</a>
   </footer>
 
