@@ -94,7 +94,7 @@
   <header>
     <p class="logo">DK CAD</p>
     <p class="tag">Open DWG and DXF drawings on your phone.</p>
-    <span class="badge">Version 7.1 &middot; Android</span>
+    <span class="badge">Version 7.2 &middot; Android</span>
   </header>
 
   <div class="cta">
@@ -110,7 +110,13 @@
   </div>
 
   <section>
-    <h2>What&rsquo;s new in 7.1 &mdash; layouts read exactly, every sheet compared against AutoCAD</h2>
+    <h2>What&rsquo;s new in 7.2 &mdash; one unreadable object no longer stops a drawing from opening</h2>
+    <ul>
+      <li><b>Some drawings stopped with</b> <code>Load failed [DwgException]: Failed to read ReadBitDouble</code> and showed nothing. <b>Measured</b> on the drawing folder: the reader gave up on <b>one</b> object it could not decode &mdash; an ACAD_TABLE in one drawing, a dynamic-block <code>BLOCKROTATEACTION</code> in six others &mdash; and threw away the other tens of thousands with it.</li>
+      <li><b>Why skipping is safe:</b> the DWG object section is a list of self-delimiting records reached through the handle map, so a record the reader cannot walk does not move the next one. The reader now skips the object it cannot decode, carries on with the next, and the status line says how many were skipped (<i>&ldquo;N unreadable objects skipped&rdquo;</i>) &mdash; a partial drawing <b>says</b> it is partial.</li>
+      <li><b>20260820 CEC settingout.dwg:</b> 31,028 entities in 4.9&nbsp;s, 1 skipped. Eight drawings in the folder that would not open before now open; the 71 that opened before produce <b>byte-identical</b> data, checked entity for entity, at the same speed.</li>
+    </ul>
+    <h2>Also new in 7.1 &mdash; layouts read exactly, every sheet compared against AutoCAD</h2>
     <ul>
       <li><b>Fifty-four sheets</b> in the drawing folder were plotted by AutoCAD and by this app and the ink compared. Half were wrong &mdash; and every cause was in the reader, not the drawing.</li>
       <li><b>The extrusion (OCS) was never read.</b> Anything AutoCAD&rsquo;s MIRROR had touched &mdash; polylines, arcs, circles, hatches, text, whole blocks &mdash; was placed at the mirror image of its real position: a building&rsquo;s grey fill sat at X&nbsp;=&nbsp;&minus;6,500 while its outline stood at +6,500. Every planar entity now goes through its own plane, inside blocks too.</li>
@@ -316,7 +322,7 @@
   </section>
 
   <footer>
-    DK CAD Mobile &middot; Version 7.1 &middot; Released 16 September 2026<br>
+    DK CAD Mobile &middot; Version 7.2 &middot; Released 21 September 2026<br>
     Desktop version: <a href="index.html">DK CAD 3D for Windows</a>
   </footer>
 
