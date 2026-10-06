@@ -94,7 +94,7 @@
   <header>
     <p class="logo">DK CAD</p>
     <p class="tag">Open DWG and DXF drawings on your phone.</p>
-    <span class="badge">Version 7.2 &middot; Android</span>
+    <span class="badge">Version 7.3 &middot; Android</span>
   </header>
 
   <div class="cta">
@@ -110,7 +110,14 @@
   </div>
 
   <section>
-    <h2>What&rsquo;s new in 7.2 &mdash; one unreadable object no longer stops a drawing from opening</h2>
+    <h2>What&rsquo;s new in 7.3 &mdash; installs on every Android phone</h2>
+    <ul>
+      <li><b>&ldquo;The download reached 100% but it would not install&rdquo; &mdash; on some phones.</b> Those phones run a <b>32-bit Android</b>. Many budget handsets do, even on a 64-bit chip (Redmi 9A / 9C class, Android Go phones, most 2&ndash;3&nbsp;GB models), and such a phone accepts only apps that carry a 32-bit engine. DK CAD shipped the 64-bit one alone, so the phone&rsquo;s installer refused it with <i>&ldquo;App not installed&rdquo;</i>. 7.3 carries both.</li>
+      <li><b>Nothing changes on a 64-bit phone</b> &mdash; Android installs exactly the same 64-bit engine as before. The download is bigger (40 &rarr; 58&nbsp;MB), because it now holds both.</li>
+      <li class="note"><b>Said honestly:</b> on a 32-bit phone the fast native DWG reader is not available (it exists only for 64-bit), so a DWG&rsquo;s <b>first</b> open uses the slower built-in reader and takes longer; every open after that is from the saved copy and takes seconds. DXF, Recent, layers, snapping, GPS &mdash; all the same.</li>
+      <li><b>This page: one more way the download sat at 100%.</b> When the page is shown <b>inside another page</b> (embedded in a website), the browser silently refuses to save anything from it &mdash; every part arrived, the bar filled, and no file appeared. The page now notices it is embedded and opens itself in its own tab, where saving works.</li>
+    </ul>
+    <h2>Also new in 7.2 &mdash; one unreadable object no longer stops a drawing from opening</h2>
     <ul>
       <li><b>Some drawings stopped with</b> <code>Load failed [DwgException]: Failed to read ReadBitDouble</code> and showed nothing. <b>Measured</b> on the drawing folder: the reader gave up on <b>one</b> object it could not decode &mdash; an ACAD_TABLE in one drawing, a dynamic-block <code>BLOCKROTATEACTION</code> in six others &mdash; and threw away the other tens of thousands with it.</li>
       <li><b>Why skipping is safe:</b> the DWG object section is a list of self-delimiting records reached through the handle map, so a record the reader cannot walk does not move the next one. The reader now skips the object it cannot decode, carries on with the next, and the status line says how many were skipped (<i>&ldquo;N unreadable objects skipped&rdquo;</i>) &mdash; a partial drawing <b>says</b> it is partial.</li>
@@ -298,6 +305,14 @@
       <li>Tap <b>Install</b>. Installing over an older DK CAD keeps your recent files.</li>
     </ol>
     <p class="note">Already have DK CAD installed? Just install this on top &mdash; nothing needs to be uninstalled first.</p>
+    <h2 style="margin-top:20px">If it does not install</h2>
+    <ul>
+      <li><b>&ldquo;App not installed&rdquo; with version 7.2 or older</b> on a budget phone &mdash; that phone runs a 32-bit Android; 7.3 and later install on it.</li>
+      <li><b>&ldquo;App not installed&rdquo; with 7.3</b> &mdash; usually storage: installing needs about <b>200&nbsp;MB free</b> for a moment. Free some space and open the file again.</li>
+      <li><b>&ldquo;Blocked by Play Protect&rdquo; / &ldquo;Unrecognised app&rdquo;</b> &mdash; DK CAD is not from the Play Store, so Android asks. Tap <b>More details &rarr; Install anyway</b>.</li>
+      <li><b>The installer sits on &ldquo;Scanning&rdquo;</b> &mdash; Play Protect is checking the file over the internet; stay online and give it a minute.</li>
+      <li><b>The bar reached 100% and no file appeared</b> &mdash; tap the <b>Save</b> button that appears under the bar. If that does nothing too, this browser cannot save files: open the page in <b>Chrome</b>.</li>
+    </ul>
   </section>
 
   <section>
@@ -322,7 +337,7 @@
   </section>
 
   <footer>
-    DK CAD Mobile &middot; Version 7.2 &middot; Released 21 September 2026<br>
+    DK CAD Mobile &middot; Version 7.3 &middot; Released 6 October 2026<br>
     Desktop version: <a href="index.html">DK CAD 3D for Windows</a>
   </footer>
 
@@ -374,8 +389,22 @@
     catch (e) { return false; }
   })();
 
+  /* EMBEDDED = no saving at all. Shown inside another page (a website that
+     embeds this one in an iframe), the page runs in a sandboxed frame, and a
+     sandboxed frame without "allow-downloads" may not save a file: Chrome drops
+     both the automatic save AND a tap on the Save link, without a word. All
+     40 MB arrive, the bar fills to 100%, and nothing happens. The cure is to be
+     the top-level page: the button opens this same page in its own tab (a new
+     tab is a popup, which embeds normally allow), where saving works. */
+  var framed = false;
+  try { framed = window.self !== window.top; } catch (e) { framed = true; }
+  var selfUrl = 'https://dheerajkum7g7-eng.github.io/dk_cad/mobile.html';
+
   function directLink(j) {
-    return j && j.url ? '<a href="' + j.url + '">direct single-file download</a>' : '';
+    /* from inside a frame a plain link would navigate the sandboxed frame,
+       which may not download either - a new tab escapes it */
+    var tgt = framed ? ' target="_blank" rel="noopener"' : '';
+    return j && j.url ? '<a href="' + j.url + '"' + tgt + '>direct single-file download</a>' : '';
   }
 
   /* cache-buster: GitHub Pages and every proxy in between will happily serve a
@@ -386,7 +415,12 @@
       rel = j;
       say(j.apkName + ' &middot; ' + mb(j.size) + '&nbsp;MB &middot; Android 5.0 and above');
       btn.disabled = false;
-      if (inApp || !canBlob) {
+      if (framed) {
+        btn.textContent = 'Open download page';
+        say('This page is shown inside another page, where the browser will not save files. ' +
+            'Tap <b>Open download page</b> (it opens in its own tab), or use the ' +
+            directLink(j) + '.', true);
+      } else if (inApp || !canBlob) {
         /* this browser cannot save a joined file - say so BEFORE 40 MB is fetched */
         say('This looks like an in-app browser, which cannot save the download. ' +
             'Open this page in <b>Chrome</b> (menu &rarr; Open in browser), or use the ' +
@@ -400,6 +434,15 @@
 
   btn.addEventListener('click', function () {
     if (!rel) return;
+    if (framed) {
+      /* no "noopener" in the features: with it window.open returns null even
+         when the tab DID open, and we could not tell success from a block */
+      var w = null;
+      try { w = window.open(selfUrl, '_blank'); } catch (e) { w = null; }
+      if (w) { try { w.opener = null; } catch (e) {} return; }
+      /* popup blocked too: fall through and try the join here anyway - the
+         Save link and the direct link are still offered at the end */
+    }
     btn.disabled = true;
     bar.style.display = 'block';
 
