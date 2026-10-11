@@ -94,7 +94,7 @@
   <header>
     <p class="logo">DK CAD</p>
     <p class="tag">Open DWG and DXF drawings on your phone.</p>
-    <span class="badge">Version 7.3 &middot; Android</span>
+    <span class="badge">Version 7.4 &middot; Android</span>
   </header>
 
   <div class="cta">
@@ -110,7 +110,13 @@
   </div>
 
   <section>
-    <h2>What&rsquo;s new in 7.3 &mdash; installs on every Android phone</h2>
+    <h2>What&rsquo;s new in 7.4 &mdash; wide polylines inside blocks draw at their width</h2>
+    <ul>
+      <li><b>&ldquo;Inside a block the Global width shows as 0.&rdquo;</b> A polyline with a width drew as a band in model space, but inside a <b>block</b> it came out as a thin hairline, because the block reader turned it into plain segments and dropped the width. It now keeps it &mdash; the polyline&rsquo;s own width times the block&rsquo;s insert scale (nested blocks multiply down the chain) &mdash; and draws the same band the same polyline gets outside a block, scaling with the zoom.</li>
+      <li><b>Measured</b> on the drawing folder against each drawing&rsquo;s own block definitions: <i>ap-2 panel no.N.dwg</i> 2,681 wide polylines in 1,805 block references, <i>30-08-24.dwg</i> 126, <i>CEC settingout</i> 89 &mdash; every one now drawn at its width, none missed. Blocks without a wide polyline draw exactly as before, checked pixel for pixel.</li>
+      <li class="note"><b>Said honestly:</b> this release covers <b>DWG</b>; a <b>.dxf</b> file still shows block polylines thin. A drawing in Recent is re-read once by itself to pick this up when its file is still on the phone &mdash; otherwise open it once with <b>Open</b>.</li>
+    </ul>
+    <h2>Also new in 7.3 &mdash; installs on every Android phone</h2>
     <ul>
       <li><b>&ldquo;The download reached 100% but it would not install&rdquo; &mdash; on some phones.</b> Those phones run a <b>32-bit Android</b>. Many budget handsets do, even on a 64-bit chip (Redmi 9A / 9C class, Android Go phones, most 2&ndash;3&nbsp;GB models), and such a phone accepts only apps that carry a 32-bit engine. DK CAD shipped the 64-bit one alone, so the phone&rsquo;s installer refused it with <i>&ldquo;App not installed&rdquo;</i>. 7.3 carries both.</li>
       <li><b>Nothing changes on a 64-bit phone</b> &mdash; Android installs exactly the same 64-bit engine as before. The download is bigger (40 &rarr; 58&nbsp;MB), because it now holds both.</li>
@@ -337,7 +343,7 @@
   </section>
 
   <footer>
-    DK CAD Mobile &middot; Version 7.3 &middot; Released 6 October 2026<br>
+    DK CAD Mobile &middot; Version 7.4 &middot; Released 12 October 2026<br>
     Desktop version: <a href="index.html">DK CAD 3D for Windows</a>
   </footer>
 
