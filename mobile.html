@@ -94,7 +94,7 @@
   <header>
     <p class="logo">DK CAD</p>
     <p class="tag">Open DWG and DXF drawings on your phone.</p>
-    <span class="badge">Version 7.4 &middot; Android</span>
+    <span class="badge">Version 7.5 &middot; Android</span>
   </header>
 
   <div class="cta">
@@ -110,7 +110,14 @@
   </div>
 
   <section>
-    <h2>What&rsquo;s new in 7.4 &mdash; wide polylines inside blocks draw at their width</h2>
+    <h2>What&rsquo;s new in 7.5 &mdash; blocks, honeycomb hatches and the Recent list</h2>
+    <ul>
+      <li><b>Blocks that looked skewed or broken.</b> Several kinds of object inside a block were drawn wrongly: curved segments of older-style polylines came out straight, the hidden frame of a spline-fitted polyline was drawn, part-ellipses on a mirrored plane landed on the wrong side, and text in a stretched or mirrored block took the wrong size, width and direction. In a <b>.dxf</b> file, circles, arcs and ellipses inside blocks were not drawn at all. Eleven kinds of block placement (scaled, rotated, mirrored, nested) now give the same picture from a DWG, from a DXF and from the saved copy.</li>
+      <li><b>HONEY and similar hatch patterns.</b> A pattern line that starts with a gap was drawn inverted, and rows were dropped when zoomed out, so hexagons turned into zig-zags. On three test hatches the lines now match the lines AutoCAD itself produces; before, 54&ndash;63% of the ink was correct. Zoomed far out, a dense pattern fades to an even tint.</li>
+      <li><b>The Recent list no longer empties after a heavy drawing.</b> One very heavy drawing could push every other drawing off the list, because its saved copy used up the whole storage budget. Running out of budget now removes saved copies only, never a Recent entry. The entry is written before the file is read, so if a drawing is too large for the phone the open stops with a message and the list stays, even if Android closes the app.</li>
+      <li class="note"><b>Said honestly:</b> entries lost before this update do not come back. Drawings in Recent are re-read once to pick up these fixes when the file is still on the phone &mdash; otherwise open the drawing once with <b>Open</b>.</li>
+    </ul>
+    <h2>Also new in 7.4 &mdash; wide polylines inside blocks draw at their width</h2>
     <ul>
       <li><b>&ldquo;Inside a block the Global width shows as 0.&rdquo;</b> A polyline with a width drew as a band in model space, but inside a <b>block</b> it came out as a thin hairline, because the block reader turned it into plain segments and dropped the width. It now keeps it &mdash; the polyline&rsquo;s own width times the block&rsquo;s insert scale (nested blocks multiply down the chain) &mdash; and draws the same band the same polyline gets outside a block, scaling with the zoom.</li>
       <li><b>Measured</b> on the drawing folder against each drawing&rsquo;s own block definitions: <i>ap-2 panel no.N.dwg</i> 2,681 wide polylines in 1,805 block references, <i>30-08-24.dwg</i> 126, <i>CEC settingout</i> 89 &mdash; every one now drawn at its width, none missed. Blocks without a wide polyline draw exactly as before, checked pixel for pixel.</li>
@@ -343,7 +350,7 @@
   </section>
 
   <footer>
-    DK CAD Mobile &middot; Version 7.4 &middot; Released 12 October 2026<br>
+    DK CAD Mobile &middot; Version 7.5 &middot; Released 18 November 2026<br>
     Desktop version: <a href="index.html">DK CAD 3D for Windows</a>
   </footer>
 
